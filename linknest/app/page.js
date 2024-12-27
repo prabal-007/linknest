@@ -1,6 +1,14 @@
-import Image from "next/image";
+"use client"
+import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 export default function Home() {
+  const router = useRouter();
+  const [text, settext] = useState("")
+
+  const createTree = () => {
+    router.push(`/generate?handle=${text}`)
+  }
   return (
     <main>
       <section className="bg-lime-800 min-h-screen grid grid-cols-2 items-center">
@@ -11,8 +19,8 @@ export default function Home() {
           <p className="font-extrabold text-5xl">simple link in bio.</p>
           <p className="text-sm my-4 text-wrap">Join 50M+ people using Linktree for their link in bio. One link to help you share everything you create, curate and sell from your Instagram, TikTok, Twitter, YouTube and other social media profiles.</p>
           <div className="flex gap-4">
-            <input type="text" className="text-sm p-2 rounded-md focus:border-green-700 text-black" placeholder="linknest/your-url" />
-            <button className="text-black bg-pink-400 p-2 rounded-full text-sm font-semibold">Claim your Linknest</button>
+            <input value={text} onChange={(e) => settext(e.target.value)} type="text" className="text-sm p-2 rounded-md focus:border-green-700 text-black" placeholder="linknest/your-url" />
+            <button onClick={() => createTree()} className="text-black bg-pink-400 p-2 rounded-full text-sm font-semibold">Claim your Linknest</button>
           </div>
         </div>
         <div className="mr-[10vw]">

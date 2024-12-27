@@ -2,12 +2,12 @@
 import React from 'react'
 import { ToastContainer, toast } from 'react-toastify'
 import { useState } from 'react'
+import { useSearchParams } from 'next/navigation'
 
 const Generate = () => {
-    // const [link, setlink] = useState("")
-    // const [lable, setlable] = useState("")
+    const searchParams = useSearchParams();
     const [links, setLinks] = useState([{ link: "", lable: "" }])
-    const [handle, sethandle] = useState("")
+    const [handle, sethandle] = useState(searchParams.get('handle'))
     const [pic, setpic] = useState("")
 
     const handleChange = (index, link, lable) => {
@@ -46,7 +46,16 @@ const Generate = () => {
         const response = await fetch("http://localhost:3000/api/add", requestOptions)
         const result = await response.json();
         toast(result.message)
-        alert(result.message)
+        if (result.success) {
+            toast.success(result.message)
+            alert(result.message)
+            setLinks([])
+            sethandle("")
+            setpic("")
+        } else {
+            toast.error(result.message)
+            alert(result.message)
+        }
     }
 
     return (
@@ -71,7 +80,7 @@ const Generate = () => {
                 <div className='flex flex-col'>
                     <p className='text-black font-semibold'>Step 3: Add Picture and Finalize</p>
                     <input value={pic || ""} onChange={(e) => setpic(e.target.value)} type="text" placeholder='Enter link to your picture' className='p-1 px-2 text-sm rounded-full m-2 focus:outline-purple-200' />
-                    <button onClick={() => submitLinks(handle, links, pic)} className='text-white bg-slate-900 px-4 py-1 rounded-full text-sm font-bold w-fit m-2'>Create Your LinkNest</button>
+                    <button disabled={pic == "" || handle == ""} onClick={() => submitLinks(handle, links, pic)} className='text-white bg-slate-900 px-4 py-1 disabled:bg-slate-600 rounded-full text-sm font-bold w-fit m-2'>Create Your LinkNest</button>
                 </div>
             </div>
             <div className='mr-[10vw]'>
@@ -80,6 +89,5 @@ const Generate = () => {
         </div>
     )
 }
-
 
 export default Generate
