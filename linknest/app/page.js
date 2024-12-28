@@ -20,12 +20,11 @@ export default function Home() {
           <p className="text-sm my-4 text-wrap">Join 50M+ people using Linktree for their link in bio. One link to help you share everything you create, curate and sell from your Instagram, TikTok, Twitter, YouTube and other social media profiles.</p>
           <div className="flex gap-4">
             <input value={text} onChange={(e) => settext(e.target.value)} type="text" className="text-sm p-2 rounded-md focus:border-green-700 text-black" placeholder="linknest/your-url" />
-            <button onClick={() => createTree()} className="text-black bg-pink-400 p-2 rounded-full text-sm font-semibold">Claim your Linknest</button>
+            <button disabled={text == ""} onClick={() => createTree()} className="text-black bg-pink-400 disabled:bg-pink-300 active:bg-pink-500 p-2 rounded-full text-sm font-semibold">Claim your Linknest</button>
           </div>
         </div>
         <div className="mr-[10vw]">
           <img src="/image.png" alt="linknest" className="w-fit h-fit rounded-lg" />
-          {/* <Image src='/linknest.png' alt="linknest" className="w-20 h-20"></Image> */}
         </div>
       </section>
       <section className="bg-red-100 min-h-screen">

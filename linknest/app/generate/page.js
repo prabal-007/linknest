@@ -3,12 +3,15 @@ import React from 'react'
 import { ToastContainer, toast } from 'react-toastify'
 import { useState } from 'react'
 import { useSearchParams } from 'next/navigation'
+import { useRouter } from 'next/navigation'
 
 const Generate = () => {
     const searchParams = useSearchParams();
     const [links, setLinks] = useState([{ link: "", lable: "" }])
     const [handle, sethandle] = useState(searchParams.get('handle'))
     const [pic, setpic] = useState("")
+    const [bio, setbio] = useState("")
+    const nevigate = useRouter()
 
     const handleChange = (index, link, lable) => {
         setLinks((initialLinks) => {
@@ -33,7 +36,8 @@ const Generate = () => {
         const raw = JSON.stringify({
             "handle": handle,
             "links": links,
-            "pic": pic
+            "pic": pic,
+            "bio": bio
         });
 
         const requestOptions = {
@@ -52,6 +56,8 @@ const Generate = () => {
             setLinks([])
             sethandle("")
             setpic("")
+            setbio("")
+            nevigate.push(`/${handle}`)
         } else {
             toast.error(result.message)
             alert(result.message)
@@ -60,7 +66,7 @@ const Generate = () => {
 
     return (
         <div className="bg-[#e0cfe0] min-h-screen grid grid-cols-2 items-center">
-            {/* <ToastContainer className=""/> */}
+            <ToastContainer />
             <div className='ml-[10vw] flex flex-col gap-2 p-10'>
                 <h2 className='text-2xl text-black font-extrabold'>Create Your LinkNest</h2>
                 <div className=''>
@@ -80,6 +86,7 @@ const Generate = () => {
                 <div className='flex flex-col'>
                     <p className='text-black font-semibold'>Step 3: Add Picture and Finalize</p>
                     <input value={pic || ""} onChange={(e) => setpic(e.target.value)} type="text" placeholder='Enter link to your picture' className='p-1 px-2 text-sm rounded-full m-2 focus:outline-purple-200' />
+                    <input value={bio || ""} onChange={(e) => setbio(e.target.value)} type="text" placeholder='Write something baout yourself..' className='p-1 px-2 text-sm rounded-md m-2 focus:outline-purple-200' />
                     <button disabled={pic == "" || handle == ""} onClick={() => submitLinks(handle, links, pic)} className='text-white bg-slate-900 px-4 py-1 disabled:bg-slate-600 rounded-full text-sm font-bold w-fit m-2'>Create Your LinkNest</button>
                 </div>
             </div>
