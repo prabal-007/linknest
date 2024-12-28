@@ -27,6 +27,7 @@ const Generate = () => {
 
     const addLink = () => {
         setLinks(links.concat([{link: "", lable: ""}]))
+        toast.info("Link added")
     }
 
     const submitLinks = async (handle, links, pic) => {
@@ -49,24 +50,27 @@ const Generate = () => {
 
         const response = await fetch("http://localhost:3000/api/add", requestOptions)
         const result = await response.json();
-        toast(result.message)
+        // toast(result.message)
         if (result.success) {
             toast.success(result.message)
-            alert(result.message)
+            // alert(result.message)
             setLinks([])
             sethandle("")
             setpic("")
             setbio("")
-            nevigate.push(`/${handle}`)
+
+            setTimeout(() => {
+                // navigate("/next-page");
+                nevigate.push(`/${handle}`)
+            }, 3000);
+            
         } else {
             toast.error(result.message)
-            alert(result.message)
         }
     }
 
-    return (
+    return (<>
         <div className="bg-[#e0cfe0] min-h-screen grid grid-cols-2 items-center">
-            <ToastContainer />
             <div className='ml-[10vw] flex flex-col gap-2 p-10'>
                 <h2 className='text-2xl text-black font-extrabold'>Create Your LinkNest</h2>
                 <div className=''>
@@ -81,7 +85,7 @@ const Generate = () => {
                         <input value={item.lable || ""} onChange={(e) => handleChange(index, item.link, e.target.value)} type="text" placeholder='Enter link text' className='p-1 px-2 text-sm rounded-full m-2 focus:outline-purple-200' />
                     </div>
                     })}
-                    <button onClick={() => addLink()} className='text-white bg-slate-900 px-3 py-1 rounded-full text-sm font-bold'>Add Link</button>
+                    <button disabled={links.some(item => !item.lable || !item.link)} onClick={() => addLink()} className='text-white bg-slate-900 px-3 py-1 rounded-full text-sm font-bold disabled:bg-slate-600'>Add Link</button>
                 </div>
                 <div className='flex flex-col'>
                     <p className='text-black font-semibold'>Step 3: Add Picture and Finalize</p>
@@ -93,7 +97,11 @@ const Generate = () => {
             <div className='mr-[10vw]'>
                 <img src="/generate.png" alt="generate" />
             </div>
+            
         </div>
+         <ToastContainer />
+         
+         </>
     )
 }
 

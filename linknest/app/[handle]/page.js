@@ -20,11 +20,10 @@ export default async function Page({ params }) {
     style={{ backgroundImage: `url(${item.pic})` }}
     >
         <div className=""></div>
-        <div className="col-span-1 text-sm flex flex-col justify-center items-center backdrop-blur-xl rounded-lg m-4">
+        <div className="col-span-1 text-sm flex flex-col justify-center items-center backdrop-blur-xl rounded-lg m-4 border border-black">
             <img src={item.pic} alt="item.handle" className="rounded-full size-24" />
             <p className="text-xl font-bold">@{item.handle}</p>
             <p className="w-2/3 text-center text-wrap p-3 px-4">{item.bio === "" ? `Hi there! I'm ${handle}` : item.bio }</p>
-            {/* <p className="w-2/3 text-center text-wrap p-3 px-4">{item.bio}</p> */}
             {item.links.map(item => {
                 return <div key={item.link} className="w-2/3">
                     <Link href={item.link} alt={item.lable} target="__blank" className="bg-white rounded-lg shadow-md font-bold w-full m-1 flex justify-center">
