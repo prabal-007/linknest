@@ -13,14 +13,20 @@ export const Navbar = () => {
         <Link href='/'>
           <h1 className='text-xl font-bold font-mono'>LinkNest*</h1>
         </Link>
-        <ul className='flex gap-6 text-sm'>
-          <li>Templates</li>
-          <li>Martekplace</li>
-          <Link href='/generate'>
+        <ul className='flex gap-2 text-sm'>
+          {/* <li>Templates</li> */}
+          <Link href='/generate' className='hover:bg-gray-100 px-3 py-1 rounded-lg'>
+            <li>Create</li>
+          </Link>
+          <Link href='/generate' className='hover:bg-gray-100 px-3 py-1 rounded-lg'>
             <li>Discover</li>
           </Link>
-          <li>Pricing</li>
-          <li>Learn</li>
+          <Link href='/' className='hover:bg-gray-100 px-3 py-1 rounded-lg'>
+            <li>Pricing</li>
+          </Link>
+          <Link href='https://imstark.xyz/' target='__blank' className='hover:bg-gray-100 px-3 py-1 rounded-lg'>
+            <li>About</li>
+          </Link>
         </ul>
       </div>
       <div className='flex gap-4 items-center'>
