@@ -50,17 +50,14 @@ const Generate = () => {
 
         const response = await fetch("http://localhost:3000/api/add", requestOptions)
         const result = await response.json();
-        // toast(result.message)
         if (result.success) {
             toast.success(result.message)
-            // alert(result.message)
             setLinks([])
             sethandle("")
             setpic("")
             setbio("")
 
             setTimeout(() => {
-                // navigate("/next-page");
                 nevigate.push(`/${handle}`)
             }, 3000);
             
