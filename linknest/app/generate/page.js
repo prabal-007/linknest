@@ -48,23 +48,41 @@ const Generate = () => {
             redirect: "follow"
         };
 
-        const response = await fetch(`${NEXT_PUBLIC_HOST}/api/add`, requestOptions)
-        const result = await response.json();
-        if (result.success) {
-            toast.success(result.message)
-            setLinks([])
-            sethandle("")
-            setpic("")
-            setbio("")
+        try {
+            const response = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/add`, requestOptions);
 
-            setTimeout(() => {
-                nevigate.push(`/${handle}`)
-            }, 3000);
+            if (!response.ok) {
+                toast.error(`Error: ${response.status} - ${response.statusText}`);
+                return;
+            }
 
-        } else {
-            toast.error(result.message)
+            let result;
+            try {
+                result = await response.json();
+            } catch (error) {
+                console.error("Error parsing JSON:", error);
+                toast.error("Invalid response. Please try again.");
+                return;
+            }
+
+            if (result.success) {
+                toast.success(result.message);
+                setLinks([]);
+                sethandle("");
+                setpic("");
+                setbio("");
+
+                setTimeout(() => {
+                    nevigate.push(`/${handle}`);
+                }, 3000);
+            } else {
+                toast.error(result.message);
+            }
+        } catch (error) {
+            console.error("Network or Fetch Error:", error);
+            toast.error("An error occurred while submitting. Please try again.");
         }
-    }
+    };
 
     return (<>
         <div className="bg-[#e0cfe0] min-h-screen grid grid-cols-2 items-center">

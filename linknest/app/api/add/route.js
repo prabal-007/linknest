@@ -19,5 +19,5 @@ export async function POST(request) {
     }
 
     const result = await collection.insertOne(body);
-    return Response.json({ success: true, error: false, message: "Your LinkNest created successfully!", result: result });
+    return Response.json({ success: true, error: false, message: "Creating your LinkNest!", result: result });
 }
