@@ -47,7 +47,7 @@ const Generate = () => {
             });
 
             if (!response.ok) {
-                toast.error(`Error: ${response.message}`);
+                toast.error(`Error: ${response.status} - ${response.statusText}`);
                 return;
             }
 
