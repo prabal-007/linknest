@@ -90,10 +90,10 @@ const Generate = () => {
                 <h2 className='text-2xl text-black font-extrabold'>Create Your LinkNest</h2>
                 <div className=''>
                     <p className='text-black font-semibold'>Step 1: Claim your handle</p>
-                    <Suspense fallback={<div>Loading...</div>}>
+                    {/* <Suspense fallback={<div>Loading...</div>}> */}
                         {/* <Handle /> */}
                     <input value={handle || ""} onChange={(e) => sethandle(e.target.value)} type="text" placeholder='Choose a handle' className='p-1 px-2 text-sm rounded-full m-2 focus:outline-purple-200' />
-                    </Suspense>
+                    {/* </Suspense> */}
                 </div>
                 <div>
                     <p className='text-black font-semibold'>Step 2: Add Links</p>
