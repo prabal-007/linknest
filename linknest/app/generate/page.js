@@ -73,9 +73,9 @@ const Generate = () => {
 
     return (
         <>
-            <div className="bg-[#e0cfe0] min-h-screen grid grid-cols-2 items-center">
+            <div className="bg-[#e0cfe0] min-h-screen grid md:grid-cols-2 items-center">
                 <div className="ml-[10vw] flex flex-col gap-2 p-10">
-                    <h2 className="text-2xl text-black font-extrabold">
+                    <h2 className="text-2xl text-black font-extrabold py-8">
                         Create Your LinkNest
                     </h2>
                     <div>
