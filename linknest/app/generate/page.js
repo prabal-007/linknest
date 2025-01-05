@@ -26,11 +26,11 @@ const Generate = () => {
     }
 
     const addLink = () => {
-        setLinks(links.concat([{link: "", lable: ""}]))
+        setLinks(links.concat([{ link: "", lable: "" }]))
         toast.info("Link added")
     }
 
-    const submitLinks = async (handle, links, pic) => {
+    const submitLinks = async (handle, links, pic, bio) => {
         const myHeaders = new Headers();
         myHeaders.append("Content-Type", "application/json");
 
@@ -60,7 +60,7 @@ const Generate = () => {
             setTimeout(() => {
                 nevigate.push(`/${handle}`)
             }, 3000);
-            
+
         } else {
             toast.error(result.message)
         }
@@ -78,9 +78,9 @@ const Generate = () => {
                     <p className='text-black font-semibold'>Step 2: Add Links</p>
                     {links && links.map((item, index) => {
                         return <div key={index} className=''>
-                        <input value={item.link || ""} onChange={(e) => handleChange(index, e.target.value, item.lable)} type="text" placeholder='Enter link' className='p-1 px-2 text-sm rounded-full m-2 focus:outline-purple-200' />
-                        <input value={item.lable || ""} onChange={(e) => handleChange(index, item.link, e.target.value)} type="text" placeholder='Enter link text' className='p-1 px-2 text-sm rounded-full m-2 focus:outline-purple-200' />
-                    </div>
+                            <input value={item.link || ""} onChange={(e) => handleChange(index, e.target.value, item.lable)} type="text" placeholder='Enter link' className='p-1 px-2 text-sm rounded-full m-2 focus:outline-purple-200' />
+                            <input value={item.lable || ""} onChange={(e) => handleChange(index, item.link, e.target.value)} type="text" placeholder='Enter link text' className='p-1 px-2 text-sm rounded-full m-2 focus:outline-purple-200' />
+                        </div>
                     })}
                     <button disabled={links.some(item => !item.lable || !item.link)} onClick={() => addLink()} className='text-white bg-slate-900 px-3 py-1 rounded-full text-sm font-bold disabled:bg-slate-600'>Add Link</button>
                 </div>
@@ -88,17 +88,16 @@ const Generate = () => {
                     <p className='text-black font-semibold'>Step 3: Add Picture and Finalize</p>
                     <input value={pic || ""} onChange={(e) => setpic(e.target.value)} type="text" placeholder='Enter link to your picture' className='p-1 px-2 text-sm rounded-full m-2 focus:outline-purple-200' />
                     <input value={bio || ""} onChange={(e) => setbio(e.target.value)} type="text" placeholder='Write something baout yourself..' className='p-1 px-2 text-sm rounded-md m-2 focus:outline-purple-200' />
-                    <button disabled={pic == "" || handle == ""} onClick={() => submitLinks(handle, links, pic)} className='text-white bg-slate-900 px-4 py-1 disabled:bg-slate-600 rounded-full text-sm font-bold w-fit m-2'>Create Your LinkNest</button>
+                    <button disabled={pic == "" || handle == ""} onClick={() => submitLinks(handle, links, pic, bio)} className='text-white bg-slate-900 px-4 py-1 disabled:bg-slate-600 rounded-full text-sm font-bold w-fit m-2'>Create Your LinkNest</button>
                 </div>
             </div>
             <div className='mr-[10vw]'>
                 <img src="/generate.png" alt="generate" />
             </div>
-            
         </div>
-         <ToastContainer />
-         
-         </>
+        <ToastContainer />
+
+    </>
     )
 }
 

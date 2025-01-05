@@ -27,8 +27,12 @@ export default function Home() {
           <img src="/image.png" alt="linknest" className="w-fit h-fit rounded-lg" />
         </div>
       </section>
-      <section className="bg-red-100 min-h-screen">
+      <section className="bg-red-50 min-h-screen backdrop-blur-md text-black font-bold text-2xl flex flex-col justify-center items-center">
+        Someting is Cooking!
         {/* asdk */}
+        <div className="flex justify-center items-center">
+        <img src="/cookbook.gif" alt="" className="size-80"/>
+        </div>
       </section>
     </main>
   );
