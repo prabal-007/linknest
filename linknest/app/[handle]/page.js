@@ -20,9 +20,9 @@ export default async function Page({ params }) {
         style={{ backgroundImage: `url(${item.pic})` }}
     >
         <div className="hidden md:block blur-xl min-h-screen hover:blur-xl"></div>
-        <div className="col-span-1 h-[80vh] text-sm flex flex-col justify-center items-center backdrop-blur-xl rounded-lg m-4 border border-double border-black">
+        <div className="col-span-1 text-sm flex flex-col justify-center items-center backdrop-blur-xl rounded-lg m-4 border border-double border-black">
             <img src={item.pic} alt="item.handle" className="rounded-full border-2 size-24" />
-            <p className="text-xl font-bold">@{item.handle}</p>
+            <Link href={`/${item.handle}`}><p className="text-xl font-bold">@{item.handle}</p></Link>
             <p className="w-2/3 text-center text-white text-wrap p-3 px-4">{item.bio === "" ? `Hi there! I'm ${handle}` : item.bio}</p>
             {item.links.map(item => {
                 return <div key={item.link} className="w-2/3">
@@ -32,7 +32,7 @@ export default async function Page({ params }) {
                 </div>
             })}
             <Link href="/" alt={item.lable} target="__blank" className="bg-yellow-400 bottom-1 absolute border border-yellow-400 active:border-black rounded-3xl shadow-md font-bold px-4 m-1 flex justify-center font-mono hover:bg-yellow-500 active:bg-yellow-600 w-fit">
-                <div className="w-full flex justify-center items-center py-3 p-2">Get Your LinkNext for Free!</div>
+                <div className="w-full flex justify-center items-center py-3 p-2">Get Your LinkNest for Free!</div>
             </Link>
         </div>
         <div className="hidden md:block blur-xl min-h-screen hover:blur-xl"></div>
