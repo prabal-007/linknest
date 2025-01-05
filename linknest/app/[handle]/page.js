@@ -19,7 +19,7 @@ export default async function Page({ params }) {
     return <div className={`grid grid-cols-3 bg-lime-100 bg-cover h-screen md:backdrop-blur-3xl bg-white/30 absolute inset-0`}
     style={{ backgroundImage: `url(${item.pic})` }}
     >
-        <div className=""></div>
+        <div className="blur-xl min-h-screen hover:blur-xl"></div>
         <div className="col-span-1 text-sm flex flex-col justify-center items-center backdrop-blur-xl rounded-lg m-4 border border-black">
             <img src={item.pic} alt="item.handle" className="rounded-full size-24" />
             <p className="text-xl font-bold">@{item.handle}</p>
