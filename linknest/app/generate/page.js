@@ -3,6 +3,7 @@
 import React, { useState, Suspense, useEffect } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import { useSearchParams, useRouter } from "next/navigation";
+import { ImageUploder } from "@/components/ImageUploder";
 
 const Generate = () => {
     const searchParams = useSearchParams();
@@ -123,23 +124,29 @@ const Generate = () => {
                         </button>
                     </div>
                     <div className="flex flex-col">
+                        <div>
+
+                        </div>
                         <p className="text-black font-semibold">
-                            Step 3: Add Picture and Finalize
+                            Step 3: Add Picture and Bio.
                         </p>
-                        <input
+                        {/* <input
                             value={pic}
                             onChange={(e) => setPic(e.target.value)}
                             type="text"
                             placeholder="Enter link to your picture"
                             className="p-1 px-2 text-sm rounded-full m-2 focus:outline-purple-200"
-                        />
+                        /> */}
+                        <div className="flex">
+                        <ImageUploder />
                         <input
                             value={bio}
                             onChange={(e) => setBio(e.target.value)}
                             type="text"
                             placeholder="Write something about yourself.."
-                            className="p-1 px-2 text-sm rounded-md m-2 focus:outline-purple-200"
+                            className="p-1 px-2 w-1/2 text-sm rounded-md m-2 focus:outline-purple-200"
                         />
+                        </div>
                         <button
                             disabled={!pic || !handle}
                             onClick={submitLinks}
