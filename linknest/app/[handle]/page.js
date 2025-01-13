@@ -21,7 +21,7 @@ export default async function Page({ params }) {
     >
         <div className="hidden md:block blur-xl min-h-screen hover:blur-xl"></div>
         <div className="col-span-1 h-[80vh] md:h-[95vh] text-sm flex flex-col justify-center items-center backdrop-blur-xl rounded-lg m-4 border border-double border-black">
-            <img src={items.pic} alt="item.handle" className="rounded-full border-2 size-24" />
+            <img src={items.pic} alt={items.handle?.[0]} className="rounded-full border-2 size-24" />
             <Link href={`/${items.handle}`}><p className="text-xl font-bold">@{items.handle}</p></Link>
             <p className="w-2/3 text-center text-white text-wrap p-3 px-4">{items.bio === "" ? `Hi there! I'm ${items.handle}` : items.bio}</p>
             {items.links.map(item => {
