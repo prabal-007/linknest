@@ -19,11 +19,7 @@ export const ImageUploder = () => {
       setAvatarUrl(loading)
       const uploadedFile = fileUploderRef.current.files[0];
 
-      // const uploadedFile = e.target.files[0];
       if (!uploadedFile) return;
-
-      // const formData = new FormData();
-      // formData.append("file", uploadedFile)
 
       const formData = new FormData();
       formData.append('pic', uploadedFile);
