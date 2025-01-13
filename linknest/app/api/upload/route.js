@@ -78,7 +78,7 @@ export async function POST(req) {
                 queueSize: 4,
             }).done();
 
-            const imageUrl = `https://${process.env.CLOUDFRONT_DOMAIN}/profile-pics/${file.name}`;
+            const imageUrl = `https://${process.env.CLOUDFRONT_DOMAIN}/profile-pics/${uniqueFilename}`;
             return NextResponse.json(
                 { success: true, error: false, message: 'File uploaded successfully', imageUrl },
                 { status: 200 }
