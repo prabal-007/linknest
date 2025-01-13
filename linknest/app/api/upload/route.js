@@ -42,7 +42,7 @@ export async function POST(req) {
             );
         }
 
-        const allowedTypes = ['image/jpeg', 'image/png', 'image/webp'];
+        const allowedTypes = ['image/jpeg', 'image/jpg', 'image/svg', 'image/png', 'image/webp'];
         if (!allowedTypes.includes(file.type)) {
             return NextResponse.json(
                 { success: false, error: true, message: 'Invalid file type. Only JPEG, PNG and WebP are allowed.' },

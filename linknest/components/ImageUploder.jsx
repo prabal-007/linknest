@@ -54,7 +54,7 @@ export const ImageUploder = () => {
       <img onClick={handleFileUpload} src={avatarUrl} alt="avatar" className='rounded-full size-28' />
       <form id='form' encType='multipart/form-data' className='absolute right-1 bottom-2 rounded-full bg-white'>
         <button onClick={handleFileUpload} type='submit' className=' p-2'><FaRegEdit /></button>
-        <input ref={fileUploderRef} onChange={uploadImageDisplay} type="file" id='file' accept='.png, .jpg, .svg' hidden />
+        <input ref={fileUploderRef} onChange={uploadImageDisplay} type="file" id='file' accept='.png, .jpg, .svg .webp' hidden />
       </form>
     </div>
   </>
