@@ -1,10 +1,12 @@
+import { useImageState } from '@/app/store/useImageState';
 import React, { useRef, useState } from 'react'
 import { FaRegEdit } from "react-icons/fa";
 
 export const ImageUploder = () => {
-  const [avatarUrl, setAvaterUrl] = useState("/profile.png")
+  const { sharedState, setSharedState } = useImageState();
+  const [avatarUrl, setAvatarUrl] = useState(sharedState)
+  // const [avatarUrl, setAvaterUrl] = useState("/profile.png")
   const fileUploderRef = useRef(null);
-  // const loading = "/loading.gif"
   const loading = "/loading.svg"
 
   const handleFileUpload = () => {
@@ -14,26 +16,33 @@ export const ImageUploder = () => {
 
   const uploadImageDisplay = async () => {
     try {
-      setAvaterUrl(loading)
+      setAvatarUrl(loading)
       const uploadedFile = fileUploderRef.current.files[0];
-      // const cachedURL = URL.createObjectURL(uploadedFile);
-      // setAvaterUrl(cachedURL);
 
       const formData = new FormData();
       formData.append("file", uploadedFile)
 
-      const response = await fetch("https://api.escuelajs.co/api/v1/files/upload", {
-        method: "POST",
-        body: formData
+      // const response = await fetch("https://api.escuelajs.co/api/v1/files/upload", {
+      //   method: "POST",
+      //   body: formData
+      // });
+
+      const response = await fetch('/api/upload', {
+        method: 'POST',
+        body: formData,
       });
 
-      if (response.status == 201) {
-        const data = await response.json();
-        setAvaterUrl(data?.location);
+      if (response.ok) {
+        const { imageUrl } = await response.json();
+        setSharedState(imageUrl);
+        setAvatarUrl(imageUrl);
+      } else {
+        console.error('Error uploading image:', response.statusText);
+        setAvatarUrl('/profile.png');
       }
-    } catch {
-      console.error(error)
-      setAvaterUrl(avatarUrl)
+    } catch(error) {
+      console.error('Error : ', error)
+      setAvatarUrl('/profile.png')
     }
   }
   return (<>

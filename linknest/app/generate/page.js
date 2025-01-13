@@ -4,10 +4,12 @@ import React, { useState, Suspense, useEffect } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import { useSearchParams, useRouter } from "next/navigation";
 import { ImageUploder } from "@/components/ImageUploder";
+import { useImageState } from "../store/useImageState";
 
 const Generate = () => {
     const searchParams = useSearchParams();
     const router = useRouter();
+    const { sharedState } = useImageState();
 
     const [links, setLinks] = useState([{ link: "", lable: "" }]);
     const [handle, setHandle] = useState("");
@@ -36,7 +38,7 @@ const Generate = () => {
         const payload = {
             handle,
             links,
-            pic,
+            pic: sharedState,
             bio,
         };
 
@@ -130,13 +132,6 @@ const Generate = () => {
                         <p className="text-black font-semibold">
                             Step 3: Add Picture and Bio.
                         </p>
-                        {/* <input
-                            value={pic}
-                            onChange={(e) => setPic(e.target.value)}
-                            type="text"
-                            placeholder="Enter link to your picture"
-                            className="p-1 px-2 text-sm rounded-full m-2 focus:outline-purple-200"
-                        /> */}
                         <div className="flex">
                         <ImageUploder />
                         <input
