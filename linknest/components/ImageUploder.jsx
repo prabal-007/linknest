@@ -19,8 +19,16 @@ export const ImageUploder = () => {
       setAvatarUrl(loading)
       const uploadedFile = fileUploderRef.current.files[0];
 
+      // const uploadedFile = e.target.files[0];
+      if (!uploadedFile) return;
+
+      // const formData = new FormData();
+      // formData.append("file", uploadedFile)
+
       const formData = new FormData();
-      formData.append("file", uploadedFile)
+      formData.append('pic', uploadedFile);
+
+      console.log('Uploading file:', file.name); // Debug log
 
       // const response = await fetch("https://api.escuelajs.co/api/v1/files/upload", {
       //   method: "POST",
@@ -40,7 +48,7 @@ export const ImageUploder = () => {
         console.error('Error uploading image:', response.statusText);
         setAvatarUrl('/profile.png');
       }
-    } catch(error) {
+    } catch (error) {
       console.error('Error : ', error)
       setAvatarUrl('/profile.png')
     }
@@ -50,7 +58,7 @@ export const ImageUploder = () => {
       <img onClick={handleFileUpload} src={avatarUrl} alt="avatar" className='rounded-full size-28' />
       <form id='form' encType='multipart/form-data' className='absolute right-1 bottom-2 rounded-full bg-white'>
         <button onClick={handleFileUpload} type='submit' className=' p-2'><FaRegEdit /></button>
-        <input ref={fileUploderRef} onChange={uploadImageDisplay} type="file" id='file' accept='.png, .jpg, .svg' hidden/>
+        <input ref={fileUploderRef} onChange={uploadImageDisplay} type="file" id='file' accept='.png, .jpg, .svg' hidden />
       </form>
     </div>
   </>

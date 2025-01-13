@@ -35,18 +35,21 @@ const Generate = () => {
     };
 
     const submitLinks = async () => {
-        const payload = {
-            handle,
-            links,
-            pic: sharedState,
-            bio,
-        };
+        const formData = new FormData();
+
+        formData.append('handle', handle);
+        formData.append('bio', bio);
+        formData.append('links', JSON.stringify(links));
+        // console.log("sharedState - ", sharedState)
+
+        if (sharedState) {
+            formData.append('pic', sharedState)
+        }
 
         try {
             const response = await fetch("/api/add", {
                 method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(payload),
+                body: formData,
             });
 
             if (!response.ok) {
@@ -143,9 +146,9 @@ const Generate = () => {
                         />
                         </div>
                         <button
-                            disabled={!pic || !handle}
+                            disabled={ !handle }
                             onClick={submitLinks}
-                            className="text-white bg-slate-900 px-4 py-1 disabled:bg-slate-600 rounded-full text-sm font-bold w-fit m-2"
+                            className="text-white cursor-pointer bg-slate-900 px-4 py-1 disabled:bg-slate-600 rounded-full text-sm font-bold w-fit m-2"
                         >
                             Create Your LinkNest
                         </button>

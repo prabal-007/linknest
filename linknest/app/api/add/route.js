@@ -1,9 +1,10 @@
 import clientPromise from "@/lib/mongodb";
 
 export async function POST(request) {
-    const body = await request.json();
+    const body = await request.formData();
 
-    if (!body.handle) {
+    const handle  = body.get('handle');
+    if (!handle) {
         return Response.json({ status: 400, success: false, error: true, message: "Handle is required!", result: null });
     }
 
@@ -12,7 +13,7 @@ export async function POST(request) {
     const collection = db.collection("links");
 
     // const doc = await collection.findOne({ handle: { $regex: `^${body.handle}$`, $options: "i" } });
-    const doc = await collection.findOne({ handle: body.handle });
+    const doc = await collection.findOne({ handle: handle });
 
     if (doc) {
         return Response.json({ status: 400, success: false, error: true, message: "Handle already exists! Try a different handle.", result: null });
