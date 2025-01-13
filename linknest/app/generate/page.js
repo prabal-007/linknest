@@ -96,7 +96,7 @@ const Generate = () => {
                         />
                     </div>
                     <div>
-                        <p className="text-black font-semibold">Step 2: Add Links</p>
+                        <p className="text-black font-semibold">Step 2: Add Profile Links</p>
                         {links.map((item, index) => (
                             <div key={index}>
                                 <input
@@ -105,7 +105,7 @@ const Generate = () => {
                                         handleChange(index, e.target.value, item.lable)
                                     }
                                     type="text"
-                                    placeholder="Enter link"
+                                    placeholder="Enter profile link"
                                     className="p-1 px-2 text-sm rounded-full m-2 focus:outline-purple-200"
                                 />
                                 <input
