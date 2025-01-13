@@ -39,14 +39,6 @@ export async function POST(req) {
         
         const file = formData.get('pic');
 
-        // Log for debugging
-        // console.log('Received data:', {
-        //         file: file,
-        //         name: file.name,
-        //         type: file.type,
-        //         size: file.size
-        // });
-
         if (!file) {
             return NextResponse.json(
                 { success: false, error: true, message: 'No file provided' },

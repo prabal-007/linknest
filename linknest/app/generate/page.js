@@ -40,7 +40,6 @@ const Generate = () => {
         formData.append('handle', handle);
         formData.append('bio', bio);
         formData.append('links', JSON.stringify(links));
-        // console.log("sharedState - ", sharedState)
 
         if (sharedState) {
             formData.append('pic', sharedState)

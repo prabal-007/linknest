@@ -3,7 +3,7 @@ import clientPromise from "@/lib/mongodb";
 export async function POST(request) {
     const body = await request.formData();
 
-    const handle  = body.get('handle');
+    const handle = body.get('handle');
     if (!handle) {
         return Response.json({ status: 400, success: false, error: true, message: "Handle is required!", result: null });
     }
@@ -19,6 +19,11 @@ export async function POST(request) {
         return Response.json({ status: 400, success: false, error: true, message: "Handle already exists! Try a different handle.", result: null });
     }
 
-    const result = await collection.insertOne(body);
+    const result = await collection.insertOne({
+        handle: handle,
+        links: JSON.parse(body.get('links')),
+        bio: body.get('bio'),
+        pic: body.get('pic')
+    });
     return Response.json({ success: true, error: false, message: "Creating your LinkNest!", result: result });
 }
