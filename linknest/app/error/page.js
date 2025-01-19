@@ -1,14 +1,17 @@
 "use client"
-import { useRouter } from 'next/router';
+
+import Link from "next/link";
+
+// import { useRouter } from 'next/router';
 
 const ErrorPage = () => {
-  const router = useRouter();
-  const { error } = router.query;
+//   const router = useRouter();
+//   const { error } = router.query;
 
   return (
     <div>
       <h1>Error</h1>
-      <p>{error}</p>
+      <Link href="/">Return to home</Link>
     </div>
   );
 };
