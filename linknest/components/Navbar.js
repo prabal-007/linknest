@@ -8,8 +8,6 @@ export const Navbar = () => {
   const pathname = usePathname();
   const showNavbar = ["/", "/generate"].includes(pathname);
   const { data: session } = useSession();
-  console.log('here - ', session?.user?.email)
-  console.log('here - ', session)
 
   return (
     <>{showNavbar && <nav className='bg-white hidden w-[80vw] right-[10vw] md:flex justify-between top-8 rounded-full p-6 py-4 items-center fixed'>

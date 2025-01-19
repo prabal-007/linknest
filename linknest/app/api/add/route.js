@@ -9,7 +9,6 @@ export async function POST(request) {
         return Response.json({ status: 400, success: false, error: true, message: "Handle is required!", result: null });
     }
     if (email == 'undefined') {
-        console.log("email rquied")
         return Response.json({ status: 400, success: false, error: true, message: "Please login to proceed!", result: null });
     }
 
@@ -20,7 +19,6 @@ export async function POST(request) {
     // const doc = await collection.findOne({ handle: { $regex: `^${body.handle}$`, $options: "i" } });
     const existingHandle = await collection.findOne({ handle: handle });
     const existinmgEmail = await collection.findOne({ email: email });
-    console.log('email - ', email)
 
     if (existingHandle) {
         return Response.json({ status: 400, success: false, error: true, message: "Handle already exists! Try a different one.", result: null });

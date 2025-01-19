@@ -38,7 +38,6 @@ const Generate = () => {
 
     const submitLinks = async () => {
         const formData = new FormData();
-        console.log('main', session?.user?.email)
 
         formData.append('handle', handle);
         formData.append('email', session?.user?.email)
