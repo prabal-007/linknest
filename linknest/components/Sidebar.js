@@ -4,12 +4,13 @@ import React, { useState } from 'react'
 import { usePathname } from 'next/navigation'
 import { AiOutlineMenuUnfold } from "react-icons/ai";
 import { AiOutlineMenuFold } from "react-icons/ai";
-
+import { signIn, signOut, useSession } from 'next-auth/react';
 
 export const Sidebar = () => {
     const pathname = usePathname();
     const showNavbar = ["/", "/generate"].includes(pathname);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const { data: session } = useSession()
 
     const toggleMenu = () => {
         setIsMenuOpen((prev) => !prev);
@@ -35,11 +36,16 @@ export const Sidebar = () => {
                     </button>
                 </div>
 
+
                 <div
                     className={`${isMenuOpen ? "block" : "hidden"
                         } z-10 w-full md:flex gap-10 items-center bg-white p-2 font-semibold md:static md:w-auto rounded-lg animation-tilt-in-fwd-tr`}
                     id="navbar-sticky"
                 >
+                    {session && <div className='p-4 flex justify-start gap-4 items-center'>
+                        <Link href=''><img src={session?.user?.image} alt={session?.user?.name} className='w-8 h-8 rounded-full' /></Link>
+                        <p>{session?.user?.name}</p>
+                    </div>}
                     <Link href="/generate" className="hover:text-blue-600 block md:inline border p-2">
                         Create
                     </Link>
@@ -52,6 +58,8 @@ export const Sidebar = () => {
                     <Link href="https://imstark.xyz/" className="hover:text-blue-600 block md:inline border p-2">
                         About
                     </Link>
+                    {!session && <button onClick={() => signIn()} className='login hover:text-blue-600 block md:inline border p-2'>Sign in</button>}
+                    {session && <button onClick={() => signOut()} className='login hover:text-blue-600 block md:inline border p-2'>Sign Out</button>}
                 </div>
             </div>
         </nav>}</>
