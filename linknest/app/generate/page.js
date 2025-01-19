@@ -5,10 +5,12 @@ import { ToastContainer, toast } from "react-toastify";
 import { useSearchParams, useRouter } from "next/navigation";
 import { ImageUploder } from "@/components/ImageUploder";
 import { useImageState } from "../store/useImageState";
+import { useSession } from "next-auth/react";
 
 const Generate = () => {
     const searchParams = useSearchParams();
     const router = useRouter();
+    const { data: session } = useSession();
     const { sharedState } = useImageState();
 
     const [links, setLinks] = useState([{ link: "", lable: "" }]);
@@ -36,8 +38,10 @@ const Generate = () => {
 
     const submitLinks = async () => {
         const formData = new FormData();
+        console.log('main', session?.user?.email)
 
         formData.append('handle', handle);
+        formData.append('email', session?.user?.email)
         formData.append('bio', bio);
         formData.append('links', JSON.stringify(links));
 
@@ -69,6 +73,11 @@ const Generate = () => {
                 }, 3000);
             } else {
                 toast.error(result.message);
+                if (result.message == "Please login to proceed!") {
+                    setTimeout(() => {
+                        router.push("/signin");
+                    }, 2000);
+                }
             }
         } catch (error) {
             console.error("Error submitting links:", error);
@@ -135,17 +144,17 @@ const Generate = () => {
                             Step 3: Add Picture and Bio.
                         </p>
                         <div className="flex">
-                        <ImageUploder />
-                        <input
-                            value={bio}
-                            onChange={(e) => setBio(e.target.value)}
-                            type="text"
-                            placeholder="Write something about yourself.."
-                            className="p-1 px-2 w-1/2 text-sm rounded-md m-2 focus:outline-purple-200"
-                        />
+                            <ImageUploder />
+                            <input
+                                value={bio}
+                                onChange={(e) => setBio(e.target.value)}
+                                type="text"
+                                placeholder="Write something about yourself.."
+                                className="p-1 px-2 w-1/2 text-sm rounded-md m-2 focus:outline-purple-200"
+                            />
                         </div>
                         <button
-                            disabled={ !handle }
+                            disabled={!handle}
                             onClick={submitLinks}
                             className="text-white cursor-pointer bg-slate-900 px-4 py-1 disabled:bg-slate-600 rounded-full text-sm font-bold w-fit m-2"
                         >
@@ -164,7 +173,41 @@ const Generate = () => {
 
 export default function Page() {
     return (
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense fallback={<div>
+            <div role="status" className="space-y-2.5 animate-pulse max-w-lg">
+                <div className="flex items-center w-full">
+                    <div className="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-32"></div>
+                    <div className="h-2.5 ms-2 bg-gray-300 rounded-full dark:bg-gray-600 w-24"></div>
+                    <div className="h-2.5 ms-2 bg-gray-300 rounded-full dark:bg-gray-600 w-full"></div>
+                </div>
+                <div className="flex items-center w-full max-w-[480px]">
+                    <div className="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-full"></div>
+                    <div className="h-2.5 ms-2 bg-gray-300 rounded-full dark:bg-gray-600 w-full"></div>
+                    <div className="h-2.5 ms-2 bg-gray-300 rounded-full dark:bg-gray-600 w-24"></div>
+                </div>
+                <div className="flex items-center w-full max-w-[400px]">
+                    <div className="h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-full"></div>
+                    <div className="h-2.5 ms-2 bg-gray-200 rounded-full dark:bg-gray-700 w-80"></div>
+                    <div className="h-2.5 ms-2 bg-gray-300 rounded-full dark:bg-gray-600 w-full"></div>
+                </div>
+                <div className="flex items-center w-full max-w-[480px]">
+                    <div className="h-2.5 ms-2 bg-gray-200 rounded-full dark:bg-gray-700 w-full"></div>
+                    <div className="h-2.5 ms-2 bg-gray-300 rounded-full dark:bg-gray-600 w-full"></div>
+                    <div className="h-2.5 ms-2 bg-gray-300 rounded-full dark:bg-gray-600 w-24"></div>
+                </div>
+                <div className="flex items-center w-full max-w-[440px]">
+                    <div className="h-2.5 ms-2 bg-gray-300 rounded-full dark:bg-gray-600 w-32"></div>
+                    <div className="h-2.5 ms-2 bg-gray-300 rounded-full dark:bg-gray-600 w-24"></div>
+                    <div className="h-2.5 ms-2 bg-gray-200 rounded-full dark:bg-gray-700 w-full"></div>
+                </div>
+                <div className="flex items-center w-full max-w-[360px]">
+                    <div className="h-2.5 ms-2 bg-gray-300 rounded-full dark:bg-gray-600 w-full"></div>
+                    <div className="h-2.5 ms-2 bg-gray-200 rounded-full dark:bg-gray-700 w-80"></div>
+                    <div className="h-2.5 ms-2 bg-gray-300 rounded-full dark:bg-gray-600 w-full"></div>
+                </div>
+                <span className="sr-only">Loading...</span>
+            </div>
+        </div>}>
             <Generate />
         </Suspense>
     );

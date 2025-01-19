@@ -1,3 +1,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+.login:hover{
+    background-color:rgb(183, 251, 251);
+    border-color: black;
+}
+
+.login:active {
+    background-color: rgb(243, 243, 243);
+}
