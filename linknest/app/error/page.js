@@ -1,17 +1,12 @@
 "use client"
-
 import Link from "next/link";
 
-// import { useRouter } from 'next/router';
-
 const ErrorPage = () => {
-//   const router = useRouter();
-//   const { error } = router.query;
 
   return (
     <div>
-      <h1>Error</h1>
-      <Link href="/">Return to home</Link>
+      <h1>OOps..Something went wrong!</h1>
+      <Link href="/" className="text-blue-500 text-2xl cursor-pointer hover:underline hover:text-blue-400">Return to home</Link>
     </div>
   );
 };
