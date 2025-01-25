@@ -1,6 +1,10 @@
 import NextAuth from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 
+if (!process.env.NEXTAUTH_SECRET) {
+  console.warn("Warning: NEXTAUTH_SECRET is not defined. Using fallback secret.");
+}
+
 const handler = NextAuth({
   providers: [
     GoogleProvider({
