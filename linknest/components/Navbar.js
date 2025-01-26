@@ -13,8 +13,9 @@ export const Navbar = () => {
     <>{showNavbar && <nav className='bg-white hidden w-[80vw] h-[10%] right-[10vw] md:flex justify-between top-8 rounded-full p-6 py-4 items-center fixed'>
       <div className='flex gap-10 justify-center items-center font-semibold'>
         <Link href='/' className=''>
+          <img src={`/${process.env.NEXT_PUBLIC_LOGO_URL}`} alt="linknest" className='w-32'/>
           {/* <h1 className='text-xl font-bold font-mono'>LinkNest*</h1> */}
-          <img src="/linknest_logo.png" alt="" className='w-32'/>
+          {/* <img src="/linknest_logo.png" alt="" className='w-32'/> */}
         </Link>
         <ul className='flex gap-2 text-sm'>
           {/* <li>Templates</li> */}
