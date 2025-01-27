@@ -32,10 +32,10 @@ export default function Page() {
                     <div className='flex flex-col gap-4'>
                         <form action="" method="post" className='flex flex-col justify-center'>
                             <label htmlFor="" className='font-semibold text-sm px-1 py-2'>Email</label>
-                            <input type='email' placeholder='xyz@gmail.com' required className='border border-gray-400 py-1 px-2 text-sm rounded-md' />
+                            <input type='email' placeholder='xyz@gmail.com' required className='border text-black border-gray-400 py-1 px-2 text-sm rounded-md' />
                             <label htmlFor="" className='font-semibold text-sm px-1 py-2'>Password</label>
-                            <input type='password' placeholder='' required className='border border-gray-400 py-1 px-2 text-sm rounded-md' />
-                            <button className='border w-fit self-center m-2 border-slate-300 text-black p-1 px-2 text-lg rounded-xl bg-white hover:border-slate-500 active:bg-slate-600'>Sign In</button>
+                            <input type='password' placeholder='' required className='border text-black border-gray-400 py-1 px-2 text-sm rounded-md' />
+                            <button onClick={() => {alert("Please login with Google!")}} className='border w-fit self-center m-2 border-slate-300 text-black p-1 px-2 text-lg rounded-xl bg-white hover:border-slate-500 active:bg-slate-600'>Sign In</button>
                         </form>
                         <hr />
                         <button className='border border-slate-300 text-black gap-2 flex justify-center items-center p-2 text-xl rounded-3xl bg-slate-100 hover:border-slate-500 active:bg-slate-600' onClick={handleSignIn}><FcGoogle />

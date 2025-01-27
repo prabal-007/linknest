@@ -10,7 +10,7 @@ import { useSession } from "next-auth/react";
 const Generate = () => {
     const searchParams = useSearchParams();
     const router = useRouter();
-    const { data: session } = useSession();
+    const { data: session, status } = useSession();
     const { sharedState } = useImageState();
 
     const [links, setLinks] = useState([{ link: "", lable: "" }]);
@@ -18,10 +18,24 @@ const Generate = () => {
     const [pic, setPic] = useState("");
     const [bio, setBio] = useState("");
 
+    useEffect(() => {
+        if (status === "loading") {
+          return;
+        }
+    
+        if (!session) {
+          router.push("/signin");
+        }
+      }, [session, status, router]);
+
     // Initialize state with search params on mount
     useEffect(() => {
         setHandle(searchParams.get("handle") || "");
     }, [searchParams]);
+
+    if (status === "loading") {
+        return <div>Loading...</div>;
+      }
 
     const handleChange = (index, link, lable) => {
         setLinks((initialLinks) =>
