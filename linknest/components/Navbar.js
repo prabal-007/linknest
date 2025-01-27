@@ -13,12 +13,10 @@ export const Navbar = () => {
     <>{showNavbar && <nav className='bg-white hidden w-[80vw] h-[10%] right-[10vw] md:flex justify-between top-8 rounded-full p-6 py-4 items-center fixed'>
       <div className='flex gap-10 justify-center items-center font-semibold'>
         <Link href='/' className=''>
-          <img src="/logo.png" alt="linknest" className='w-32'/>
+          <img src="/logo.png" alt="linknest" className='w-32' />
           {/* <h1 className='text-xl font-bold font-mono'>LinkNest*</h1> */}
-          {/* <img src="/linknest_logo.png" alt="" className='w-32'/> */}
         </Link>
         <ul className='flex gap-2 text-sm'>
-          {/* <li>Templates</li> */}
           <Link href='/generate' className='hover:bg-gray-100 px-3 py-1 rounded-lg'>
             <li>Create</li>
           </Link>
@@ -35,9 +33,9 @@ export const Navbar = () => {
       </div>
       <div className='flex gap-4 items-center'>
         {!session && <button onClick={() => signIn()} className='login bg-gray-200 px-4 py-2 rounded-lg'>Sign in</button>}
-        {session && <button onClick={() => signOut({callbackUrl: "/signin"})} className='login bg-gray-200 px-4 py-2 rounded-lg'>Sign Out</button>}
+        {session && <button onClick={() => signOut({ callbackUrl: "/signin" })} className='login bg-gray-200 px-4 py-2 rounded-lg'>Sign Out</button>}
         {session && <Link href=''><img src={session?.user?.image} alt={session?.user?.name} className='w-8 h-8 rounded-full' /></Link>}
-        
+
         {/* <button className='signup bg-black text-white px-4 py-2 rounded-full'>Sign up free</button> */}
       </div>
     </nav>}
