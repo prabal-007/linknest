@@ -13,7 +13,7 @@ export const Footer = () => {
             <ul className='flex gap-4'>
                 <li><Link href="mailto:gprabal000@gmail.com" className='hover:text-blue-600'>Contact Us</Link></li>
                 <li><Link href="/TermsOfService" className='hover:text-blue-600'>Terms of use</Link></li>
-                <li><Link href="/TermsOfService" className='hover:text-blue-600'>Privacy Policy</Link></li>
+                <li><Link href="/PrivacyPolicy" className='hover:text-blue-600'>Privacy Policy</Link></li>
             </ul>
         </div>
     </div>
