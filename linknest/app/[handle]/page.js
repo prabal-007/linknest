@@ -32,7 +32,7 @@ export default async function Page({ params }) {
                 </div>
             })}
             <Link href="/" alt={items.lable} target="__blank" className="bg-yellow-400 bottom-1 absolute border border-yellow-400 active:border-black rounded-3xl shadow-md font-bold px-4 m-1 flex justify-center font-mono hover:bg-yellow-500 active:bg-yellow-600 w-fit">
-                <div className="w-full flex justify-center items-center py-3 p-2">Get Your LinkNest for Free!</div>
+                <div className="w-full flex justify-center items-center py-3 p-2">Get Your ViewMee for Free!</div>
             </Link>
         </div>
         <div className="hidden md:block blur-xl min-h-screen hover:blur-xl"></div>

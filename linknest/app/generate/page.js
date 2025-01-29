@@ -103,7 +103,7 @@ const Generate = () => {
             <div className="bg-[#e0cfe0] min-h-screen grid md:grid-cols-2 items-center">
                 <div className="ml-[10vw] flex flex-col gap-2 p-10">
                     <h2 className="text-2xl text-black font-extrabold py-8">
-                        Create Your LinkNest
+                        Create Your ViewMee
                     </h2>
                     <div>
                         <p className="text-black font-semibold">
@@ -171,7 +171,7 @@ const Generate = () => {
                             onClick={submitLinks}
                             className="text-white cursor-pointer bg-slate-900 px-4 py-1 disabled:bg-slate-600 rounded-full text-sm font-bold w-fit m-2"
                         >
-                            Create Your LinkNest
+                            Create Your ViewMee
                         </button>
                     </div>
                 </div>

@@ -16,7 +16,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "LinkNest",
+  title: "ViewMee",
   description: "One link for all your Profiles",
 };
 

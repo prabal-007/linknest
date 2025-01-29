@@ -35,5 +35,5 @@ export async function POST(request) {
         bio: body.get('bio'),
         pic: body.get('pic')
     });
-    return Response.json({ success: true, error: false, message: "Creating your LinkNest!", result: result });
+    return Response.json({ success: true, error: false, message: "Creating your ViewMee!", result: result });
 }
