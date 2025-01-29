@@ -4,7 +4,7 @@ const page = () => {
   return (
     <div className="p-6 max-w-4xl mx-auto">
     <h1 className="text-3xl font-bold mb-4">Terms of Service</h1>
-    <p className="text-sm text-gray-600">Effective Date: [Insert Date]</p>
+    <p className="text-sm text-gray-600">Effective Date: 22/01/2025</p>
 
     <h2 className="text-xl font-semibold mt-6 mb-2">1. Acceptance of Terms</h2>
     <p>By accessing or using <a className='text-blue-600' href="/" rel="noopener noreferrer">ViewMee.live</a>, you agree to these Terms of Service. If you do not agree, please do not use the platform.</p>

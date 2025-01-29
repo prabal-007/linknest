@@ -28,7 +28,7 @@ export default function Home() {
           <img src="/image.png" alt="ViewMee" className="w-fit h-fit rounded-lg" />
         </div>
       </section>
-      <section className="bg-red-50 min-h-screen backdrop-blur-md text-black font-bold text-2xl flex flex-col justify-center items-center">
+      <section className="bg-yellow-600 min-h-screen backdrop-blur-md text-black font-bold text-2xl flex flex-col justify-center items-center">
         Someting is Cooking!
         {/* asdk */}
         <div className="flex justify-center items-center">

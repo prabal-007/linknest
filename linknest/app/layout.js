@@ -4,6 +4,7 @@ import { Navbar } from "@/components/Navbar";
 import { Sidebar } from "@/components/Sidebar";
 import { Providers } from "./providers";
 import { Analytics } from "@vercel/analytics/react"
+import { Footer } from "@/components/Footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -16,7 +17,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "ViewMee",
+  title: "ViewMee.live",
   description: "One link for all your Profiles",
 };
 
@@ -30,6 +31,7 @@ export default function RootLayout({ children }) {
           <Navbar />
           <Sidebar />
           {children}
+          <Footer />
           <Analytics />
         </Providers>
       </body>
