@@ -20,7 +20,7 @@ export const Sidebar = () => {
         <>{showNavbar && <nav className="backdrop-blur-sm md:hidden fixed w-full z-20 top-0 start-0 border-gray-200 dark:border-gray-600">
             <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
                 <Link href="/" className="flex items-center">
-                    <h1 className="text-2xl font-bold font-serif" alt="LinkNest Logo"><span className='font-sans font-extrabold'>Link</span>Nest*</h1>
+                    <h1 className="text-2xl font-bold font-serif" alt="ViewMee Logo"><span className='font-sans font-extrabold'>Link</span>Nest*</h1>
                 </Link>
 
                 <div className="flex md:order-2 space-x-3 rtl:space-x-reverse">

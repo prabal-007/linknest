@@ -1,6 +1,6 @@
 "use client"
 import Link from 'next/link'
-import React, { useState } from 'react'
+import React from 'react'
 import { usePathname } from 'next/navigation'
 import { signIn, signOut, useSession } from 'next-auth/react'
 
@@ -13,8 +13,8 @@ export const Navbar = () => {
     <>{showNavbar && <nav className='bg-white hidden w-[80vw] h-[10%] right-[10vw] md:flex justify-between top-8 rounded-full p-6 py-4 items-center fixed'>
       <div className='flex gap-10 justify-center items-center font-semibold'>
         <Link href='/' className=''>
-          <img src="/logo.png" alt="linknest" className='w-32' />
-          {/* <h1 className='text-xl font-bold font-mono'>LinkNest*</h1> */}
+          <img src="/logo-rbg.png" alt="viewMee" className='w-32' />
+          {/* <h1 className='text-xl font-bold font-mono'>ViewMee*</h1> */}
         </Link>
         <ul className='flex gap-2 text-sm'>
           <Link href='/generate' className='hover:bg-gray-100 px-3 py-1 rounded-lg'>
