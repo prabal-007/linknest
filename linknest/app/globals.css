@@ -3,11 +3,35 @@
 @tailwind utilities;
 
 
-.login:hover{
-    background-color:rgb(183, 251, 251);
+.login:hover {
+    background-color: rgb(183, 251, 251);
     border-color: black;
 }
 
 .login:active {
     background-color: rgb(243, 243, 243);
+}
+
+@layer utilities {
+@keyframes scale-in-hor-right {
+  0% {
+    -webkit-transform: scaleX(0);
+            transform: scaleX(0);
+    -webkit-transform-origin: 100% 100%;
+            transform-origin: 100% 100%;
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: scaleX(1);
+            transform: scaleX(1);
+    -webkit-transform-origin: 100% 100%;
+            transform-origin: 100% 100%;
+    opacity: 1;
+  }
+}
+
+}
+
+.animate-tracking-in-expand {
+    animation: scale-in-hor-right 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 }

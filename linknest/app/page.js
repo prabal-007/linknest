@@ -1,6 +1,7 @@
 "use client"
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import ViewMeeLanding from "@/components/ViewMeeLanding";
 
 export default function Home() {
   const router = useRouter();
@@ -11,12 +12,12 @@ export default function Home() {
   }
   return (
     <main>
-      <section className="bg-lime-800 min-h-screen grid md:grid-cols-2 items-center">
-        <div className="md:ml-[10vw] text-yellow-400 flex flex-col gap-1 md:px-1 px-4 -mt-4">
+      <section className="min-h-screen grid md:grid-cols-2 items-center">
+        <div className="md:ml-[10vw] text-yellow-400 flex flex-col gap-1 md:px-1 px-4 -mt-4 backdrop-blur-md">
           <p className="font-extrabold text-5xl">See everything</p>
           <p className="font-extrabold text-5xl">you are,</p>
           <p className="font-extrabold text-5xl">in one view.</p>
-          <img src="/image.png" alt="ViewMee" className="w-fit h-fit mt-2 -mb-2 rounded-lg block md:hidden" />
+          <img src="/landing.png" alt="ViewMee" className="w-fit h-fit mt-2 -mb-2 rounded-lg block md:hidden" />
           {/* <img src="/social.gif" alt="ViewMee" className="w-fit h-fit mt-2 -mb-2 rounded-lg block md:hidden" /> */}
           <p className="text-sm font-semibold my-4 text-wrap">Join creators, influencers, and entrepreneurs who use ViewMee to build a dynamic digital presence. With one simple link, connect your audience to everything you create, promote and share with just one "link in bio".</p>
           <div className="flex gap-4">
@@ -25,15 +26,11 @@ export default function Home() {
           </div>
         </div>
         <div className="hidden md:block mr-[10vw]">
-          <img src="/image.png" alt="ViewMee" className="w-fit h-fit rounded-lg" />
+          <img src="/landing.png" alt="ViewMee" className="w-fit h-fit rounded-lg" />
         </div>
       </section>
-      <section className="bg-yellow-600 min-h-screen backdrop-blur-md text-black font-bold text-2xl flex flex-col justify-center items-center">
-        Someting is Cooking!
-        {/* asdk */}
-        <div className="flex justify-center items-center">
-        <img src="/cookbook.gif" alt="" className="size-80"/>
-        </div>
+      <section className="min-h-screen backdrop-blur-md text-black font-bold text-2xl flex flex-col justify-center items-center">
+        <ViewMeeLanding />
       </section>
     </main>
   );

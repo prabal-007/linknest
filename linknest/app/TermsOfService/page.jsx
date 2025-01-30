@@ -2,7 +2,7 @@ import React from 'react'
 
 const page = () => {
   return (
-    <div className="p-6 max-w-4xl mx-auto">
+    <div className="p-6 max-w-4xl mx-auto bg-white w-full backdrop-blur-md">
     <h1 className="text-3xl font-bold mb-4">Terms of Service</h1>
     <p className="text-sm text-gray-600">Effective Date: 22/01/2025</p>
 
