@@ -19,8 +19,9 @@ export const Sidebar = () => {
     return (
         <>{showNavbar && <nav className="backdrop-blur-sm md:hidden fixed w-full z-20 top-0 start-0 border-gray-200 dark:border-gray-600">
             <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-                <Link href="/" className="flex items-center">
-                    <h1 className="text-2xl font-bold font-serif" alt="ViewMee Logo"><span className='font-sans font-extrabold'>Link</span>Nest*</h1>
+                <Link href="/" className="flex items-center w-fit">
+                    {/* <h1 className="text-2xl font-bold font-serif" alt="ViewMee Logo"><span className='font-sans font-extrabold'>Link</span>Nest*</h1> */}
+                    <img src="/logo.png" alt="ViewMee" className="w-28 rounded-md"/>
                 </Link>
 
                 <div className="flex md:order-2 space-x-3 rtl:space-x-reverse">

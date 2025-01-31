@@ -8,8 +8,8 @@ export const Footer = () => {
   const showFooter = ['/', '/generate'].includes(pathname);
   return (
     <>{showFooter && <div className='flex flex-col justify-center z-100 items-center p-2 pb-0'> <div className='p-1 w-[95%] backdrop-blur-md shadow-md md:p-4 py-1 flex justify-around items-center bg-slate-100 rounded-xl border-2 border-white hover:border-2 hover:border-yellow-400 '>
-      <Link href={"/"}>
-      <img src="/logo-rbg.png" alt="viewMee" className='hidden md:block w-32' />
+      <Link href={"/"} className='hidden md:block'>
+      <img src="/logo-rbg.png" alt="viewMee" className='w-32' />
       </Link>
       <div className='flex gap-8'>
         <ul className='flex justify-between items-center gap-4'>
