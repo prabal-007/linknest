@@ -13,7 +13,7 @@ export async function POST(request) {
     }
 
     const client = await clientPromise;
-    const db = client.db("linknext");
+    const db = client.db("linknest");
     const collection = db.collection("links");
 
     // const doc = await collection.findOne({ handle: { $regex: `^${body.handle}$`, $options: "i" } });

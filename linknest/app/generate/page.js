@@ -105,7 +105,7 @@ const Generate = () => {
 
                 <div className="ml-[10vw] flex flex-col gap-2 p-10">
                     <h2 className="text-2xl text-black font-extrabold py-8">
-                        Create Your ViewMee
+                        Create Your <span className="font-semibold">ViewMee.live</span>
                     </h2>
                     <div>
                         <p className="text-black font-semibold">
