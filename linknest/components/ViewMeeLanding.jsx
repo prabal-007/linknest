@@ -15,8 +15,8 @@ const ViewMeeLanding = () => {
 const View2 = () => {
     return (
         <div className="min-h-screen rounded-full flex flex-col items-center justify-center p-6 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:14px_24px] ]">
-            <div className='flex md:flex-col flex-row justify-center items-center w-full'>
-                <div className='hidden justify-center items-center'>
+            <div className='flex md:flex-row flex-col justify-center items-center w-full'>
+                <div className='hidden md:flex justify-center items-center'>
                     <Image src={showcaseImage} alt="ViewMee showcase" className="size-2/3 rounded-xl mb-6 shadow-lg" />
                 </div>
                 <div className='flex flex-col justify-center items-center p-5'>
