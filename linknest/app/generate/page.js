@@ -39,8 +39,6 @@ const Generate = () => {
     }
 
     const handleChange = (index, link, lable) => {
-        console.log(`ok - ${index} : ${link} : ${lable}`)
-        console.log(lable)
         setLinks((initialLinks) =>
             initialLinks.map((item, i) =>
                 i === index ? { link, lable } : item
@@ -135,15 +133,6 @@ const Generate = () => {
                                         placeholder="Enter profile link"
                                         className="p-1 px-2 text-sm rounded-full m-2 focus:outline-purple-200"
                                     />
-                                    {/* <input
-                                    value={item.lable}
-                                    onChange={(e) =>
-                                        handleChange(index, item.link, e.target.value)
-                                    }
-                                    type="text"
-                                    placeholder="Enter link text"
-                                    className="p-1 px-2 text-sm rounded-full m-2 focus:outline-purple-200"
-                                /> */}
                                     <DropdownSelector
                                         key={index}
                                         selectvalue={item.lable}
@@ -151,6 +140,15 @@ const Generate = () => {
                                         placeholder="Select link text"
                                         className="p-1 px-2 text-sm rounded-full m-2  focus:outline-purple-200"
                                     />
+                                    {/* {item.label === "Other" && (
+                                        <input
+                                            value={item.customLabel || ""}
+                                            onChange={(e) => handleChange(index, item.link, e.target.value)}
+                                            type="text"
+                                            placeholder="Enter custom label"
+                                            className="p-1 px-2 text-sm rounded-full m-2 focus:outline-purple-200"
+                                        />
+                                    )} */}
                                 </div>
                             ))}
                             <button
@@ -170,13 +168,13 @@ const Generate = () => {
                             </p>
                             <div className="flex">
                                 <ImageUploder />
-                                <input
+                                <textarea
                                     value={bio}
                                     onChange={(e) => setBio(e.target.value)}
-                                    type="text"
                                     placeholder="Write something about yourself.."
-                                    className="p-1 px-2 w-1/2 text-sm rounded-md m-2 focus:outline-purple-200"
+                                    className="p-1 px-2 w-1/2 bg-gray-100 overflow-y-auto border-2 border-gray-400 focus:border-black max-w-xs rounded-md m-2 focus:outline-purple-200 outline-none text-sm resize-none transition-height"
                                 />
+
                             </div>
                             <button
                                 disabled={!handle}
