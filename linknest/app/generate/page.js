@@ -6,6 +6,7 @@ import { useSearchParams, useRouter } from "next/navigation";
 import { ImageUploder } from "@/components/ImageUploder";
 import { useImageState } from "../store/useImageState";
 import { useSession } from "next-auth/react";
+import { DropdownSelector } from "@/components/ui/DropdownSelector";
 
 const Generate = () => {
     const searchParams = useSearchParams();
@@ -20,13 +21,13 @@ const Generate = () => {
 
     useEffect(() => {
         if (status === "loading") {
-          return;
+            return;
         }
-    
+
         if (!session) {
-          router.push("/signin");
+            router.push("/signin");
         }
-      }, [session, status, router]);
+    }, [session, status, router]);
 
     // Initialize state with search params on mount
     useEffect(() => {
@@ -35,9 +36,11 @@ const Generate = () => {
 
     if (status === "loading") {
         return <div>Loading...</div>;
-      }
+    }
 
     const handleChange = (index, link, lable) => {
+        console.log(`ok - ${index} : ${link} : ${lable}`)
+        console.log(lable)
         setLinks((initialLinks) =>
             initialLinks.map((item, i) =>
                 i === index ? { link, lable } : item
@@ -82,7 +85,7 @@ const Generate = () => {
                 setBio("");
 
                 setTimeout(() => {
-                    router.push(`/${handle}`);
+                    router.push(`/profile/${handle}`);
                 }, 3000);
             } else {
                 toast.error(result.message);
@@ -103,36 +106,36 @@ const Generate = () => {
             <div className="bg-[#e0cfe0] min-h-screen grid md:grid-cols-2 items-center">
                 <div className="backdrop-blur-md md:top-[8%] relative">
 
-                <div className="ml-[10vw] flex flex-col gap-2 p-10">
-                    <h2 className="text-2xl text-black font-extrabold py-8">
-                        Create Your <span className="font-semibold">ViewMee.live</span>
-                    </h2>
-                    <div>
-                        <p className="text-black font-semibold">
-                            Step 1: Claim your handle
-                        </p>
-                        <input
-                            value={handle}
-                            onChange={(e) => setHandle(e.target.value)}
-                            type="text"
-                            placeholder="Choose a handle"
-                            className="p-1 px-2 text-sm rounded-full m-2 focus:outline-purple-200"
-                        />
-                    </div>
-                    <div>
-                        <p className="text-black font-semibold">Step 2: Add Profile Links</p>
-                        {links.map((item, index) => (
-                            <div key={index}>
-                                <input
-                                    value={item.link}
-                                    onChange={(e) =>
-                                        handleChange(index, e.target.value, item.lable)
-                                    }
-                                    type="text"
-                                    placeholder="Enter profile link"
-                                    className="p-1 px-2 text-sm rounded-full m-2 focus:outline-purple-200"
-                                />
-                                <input
+                    <div className="ml-[10vw] flex flex-col gap-2 p-10">
+                        <h2 className="text-2xl text-black font-extrabold py-8">
+                            Create Your <span className="font-bold text-blue-950 animate-pulse">ViewMee.live</span>
+                        </h2>
+                        <div>
+                            <p className="text-black font-semibold">
+                                Step 1: Claim your handle
+                            </p>
+                            <input
+                                value={handle}
+                                onChange={(e) => setHandle(e.target.value)}
+                                type="text"
+                                placeholder="Choose a handle"
+                                className="p-1 px-2 text-sm rounded-full m-2 focus:outline-purple-200"
+                            />
+                        </div>
+                        <div>
+                            <p className="text-black font-semibold">Step 2: Add Profile Links</p>
+                            {links.map((item, index) => (
+                                <div key={index}>
+                                    <input
+                                        value={item.link}
+                                        onChange={(e) =>
+                                            handleChange(index, e.target.value, item.lable)
+                                        }
+                                        type="text"
+                                        placeholder="Enter profile link"
+                                        className="p-1 px-2 text-sm rounded-full m-2 focus:outline-purple-200"
+                                    />
+                                    {/* <input
                                     value={item.lable}
                                     onChange={(e) =>
                                         handleChange(index, item.link, e.target.value)
@@ -140,43 +143,50 @@ const Generate = () => {
                                     type="text"
                                     placeholder="Enter link text"
                                     className="p-1 px-2 text-sm rounded-full m-2 focus:outline-purple-200"
+                                /> */}
+                                    <DropdownSelector
+                                        key={index}
+                                        selectvalue={item.lable}
+                                        onSelect={(value) => handleChange(index, item.link, value)}
+                                        placeholder="Select link text"
+                                        className="p-1 px-2 text-sm rounded-full m-2  focus:outline-purple-200"
+                                    />
+                                </div>
+                            ))}
+                            <button
+                                disabled={links.some((item) => !item.lable || !item.link)}
+                                onClick={addLink}
+                                className="text-white bg-slate-900 px-3 py-1 rounded-full text-sm font-bold disabled:bg-slate-600"
+                            >
+                                Add Link
+                            </button>
+                        </div>
+                        <div className="flex flex-col">
+                            <div>
+
+                            </div>
+                            <p className="text-black font-semibold">
+                                Step 3: Add Picture and Bio.
+                            </p>
+                            <div className="flex">
+                                <ImageUploder />
+                                <input
+                                    value={bio}
+                                    onChange={(e) => setBio(e.target.value)}
+                                    type="text"
+                                    placeholder="Write something about yourself.."
+                                    className="p-1 px-2 w-1/2 text-sm rounded-md m-2 focus:outline-purple-200"
                                 />
                             </div>
-                        ))}
-                        <button
-                            disabled={links.some((item) => !item.lable || !item.link)}
-                            onClick={addLink}
-                            className="text-white bg-slate-900 px-3 py-1 rounded-full text-sm font-bold disabled:bg-slate-600"
-                        >
-                            Add Link
-                        </button>
-                    </div>
-                    <div className="flex flex-col">
-                        <div>
-
+                            <button
+                                disabled={!handle}
+                                onClick={submitLinks}
+                                className="text-white cursor-pointer bg-slate-900 px-4 py-1 disabled:bg-slate-600 rounded-full text-sm font-bold w-fit m-2"
+                            >
+                                Create my ViewMee
+                            </button>
                         </div>
-                        <p className="text-black font-semibold">
-                            Step 3: Add Picture and Bio.
-                        </p>
-                        <div className="flex">
-                            <ImageUploder />
-                            <input
-                                value={bio}
-                                onChange={(e) => setBio(e.target.value)}
-                                type="text"
-                                placeholder="Write something about yourself.."
-                                className="p-1 px-2 w-1/2 text-sm rounded-md m-2 focus:outline-purple-200"
-                            />
-                        </div>
-                        <button
-                            disabled={!handle}
-                            onClick={submitLinks}
-                            className="text-white cursor-pointer bg-slate-900 px-4 py-1 disabled:bg-slate-600 rounded-full text-sm font-bold w-fit m-2"
-                        >
-                            Create Your ViewMee
-                        </button>
                     </div>
-                </div>
                 </div>
                 <div className="mr-[10vw]">
                     <img src="/generate.png" alt="generate" />

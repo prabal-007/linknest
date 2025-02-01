@@ -35,3 +35,23 @@
 .animate-tracking-in-expand {
     animation: scale-in-hor-right 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 }
+
+/* border p-1 bg-gray-100 hover:bg-white */
+/* flex gap-2 justify-end items-center */
+.dropdown-item {
+        border: 1px;
+        padding: 4px;
+        background-color: rgb(245, 226, 243);
+}
+
+.dropdown-item:hover {
+        background-color: whitesmoke;
+}
+
+.dropdown-span {
+        display: flex;
+        gap: 8px;
+        justify-content: end;
+        align-items: center;
+        border: 1px;
+}
