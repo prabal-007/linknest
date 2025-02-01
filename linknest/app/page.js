@@ -18,7 +18,7 @@ export default function Home() {
           <p className="font-extrabold text-5xl">you are,</p>
           <p className="font-extrabold text-5xl">in one view.</p>
           <img src="/landing.png" alt="ViewMee" className="w-fit h-fit mt-2 -mb-2 rounded-lg block md:hidden" />
-          {/* <img src="/social.gif" alt="ViewMee" className="w-fit h-fit mt-2 -mb-2 rounded-lg block md:hidden" /> */}
+          {/* <img src="/gifs/social.gif" alt="ViewMee" className="w-fit h-fit mt-2 -mb-2 rounded-lg block md:hidden" /> */}
           <p className="text-sm font-semibold my-4 text-wrap">Join creators, influencers, and entrepreneurs who use ViewMee to build a dynamic digital presence. With one simple link, connect your audience to everything you create, promote and share with just one "link in bio".</p>
           <div className="flex gap-4">
             <input value={text} onChange={(e) => settext(e.target.value)} type="text" className="text-sm p-2 rounded-md focus:border-green-700 text-black" placeholder="viewmee.live/username" />
