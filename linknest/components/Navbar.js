@@ -6,7 +6,7 @@ import { signIn, signOut, useSession } from 'next-auth/react'
 
 export const Navbar = () => {
   const pathname = usePathname();
-  const showNavbar = ["/", "/generate"].includes(pathname);
+  const showNavbar = ["/", "/generate", "/profile"].includes(pathname);
   const { data: session } = useSession();
 
   return (
