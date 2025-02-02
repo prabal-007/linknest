@@ -19,6 +19,7 @@ const Create = () => {
     const [handle, setHandle] = useState("");
     const [pic, setPic] = useState("");
     const [bio, setBio] = useState("");
+    const accounts = ["Facebook", "Github", "Instagram", "Linkedin", "Portfolio", "X", "WhatsApp", "Website", "Other"];
 
     useEffect(() => {
         if (status === "loading") {
@@ -84,7 +85,7 @@ const Create = () => {
                 setBio("");
 
                 setTimeout(() => {
-                    router.push(`/dashboard/${handle}`);
+                    router.push(`/review/${handle}`);
                 }, 3000);
             } else {
                 toast.error(result.message);
@@ -136,6 +137,7 @@ const Create = () => {
                                     />
                                     <DropdownSelector
                                         key={index}
+                                        options={accounts}
                                         selectvalue={item.lable}
                                         onSelect={(value) => handleChange(index, item.link, value)}
                                         placeholder="Select link text"
