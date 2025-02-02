@@ -4,11 +4,12 @@ import React, { useState, Suspense, useEffect } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import { useSearchParams, useRouter } from "next/navigation";
 import { ImageUploder } from "@/components/ImageUploder";
-import { useImageState } from "../store/useImageState";
+// import { useImageState } from "../store/useImageState";
+import { useImageState } from "@/app/store/useImageState";
 import { useSession } from "next-auth/react";
 import { DropdownSelector } from "@/components/ui/DropdownSelector";
 
-const Generate = () => {
+const Create = () => {
     const searchParams = useSearchParams();
     const router = useRouter();
     const { data: session, status } = useSession();
@@ -83,7 +84,7 @@ const Generate = () => {
                 setBio("");
 
                 setTimeout(() => {
-                    router.push(`/profile/${handle}`);
+                    router.push(`/dashboard/${handle}`);
                 }, 3000);
             } else {
                 toast.error(result.message);
@@ -101,7 +102,7 @@ const Generate = () => {
 
     return (
         <>
-            <div className="bg-[#e0cfe0] min-h-screen grid md:grid-cols-2 items-center">
+            <div className="bg-[#e0cfe0] w-fit min-h-screen grid md:grid-cols-2 items-center">
                 <div className="backdrop-blur-md md:top-[8%] relative">
 
                     <div className="ml-[10vw] flex flex-col gap-2 p-10">
@@ -232,7 +233,7 @@ export default function Page() {
                 <span className="sr-only">Loading...</span>
             </div>
         </div>}>
-            <Generate />
+            <Create />
         </Suspense>
     );
 }

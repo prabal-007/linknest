@@ -6,7 +6,7 @@ import { signIn, signOut, useSession } from 'next-auth/react'
 
 export const Navbar = () => {
   const pathname = usePathname();
-  const showNavbar = ["/", "/generate", "/profile"].includes(pathname);
+  const showNavbar = ["/"].includes(pathname);
   const { data: session } = useSession();
 
   return (
@@ -17,10 +17,10 @@ export const Navbar = () => {
           {/* <h1 className='text-xl font-bold font-mono'>ViewMee*</h1> */}
         </Link>
         <ul className='flex gap-2 text-sm'>
-          <Link href='/generate' className='hover:bg-gray-100 px-3 py-1 rounded-lg'>
+          <Link href='/create' className='hover:bg-gray-100 px-3 py-1 rounded-lg'>
             <li>Create</li>
           </Link>
-          <Link href='/generate' className='hover:bg-gray-100 px-3 py-1 rounded-lg'>
+          <Link href='/create' className='hover:bg-gray-100 px-3 py-1 rounded-lg'>
             <li>Discover</li>
           </Link>
           <Link href='/' className='hover:bg-gray-100 px-3 py-1 rounded-lg'>

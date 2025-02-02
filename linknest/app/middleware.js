@@ -8,5 +8,5 @@ export default withAuth({
 });
 
 export const config = {
-  matcher: ['/generate/*'],  // Matches /generate and all subpaths
+  matcher: ['/create/*'],  // Matches /create and all subpaths
 };
