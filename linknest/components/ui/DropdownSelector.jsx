@@ -41,7 +41,7 @@ export const DropdownSelector = ({ selectedValue, onSelect }) => {
                 {item === "Github" ? <SiGithub />
                   : item === "Other" ? <LiaExternalLinkSquareAltSolid />
                     : item === "X" ? <img src={`/icons/x.png`} className="size-6" alt="" />
-                      : <img src={`/icons/${item}.png`} className="size-6" alt="" />}
+                      : <img src={`/icons/${item.toLowerCase()}.png`} className="size-6" alt="" />}
               </span>
             </DropdownItem>)
         })}
