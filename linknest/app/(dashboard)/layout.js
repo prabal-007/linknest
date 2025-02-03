@@ -7,7 +7,7 @@ import { IoCreate } from "react-icons/io5";
 import { RiChatAiFill } from "react-icons/ri";
 import { VscOpenPreview } from "react-icons/vsc";
 import { MdOutlineContactSupport } from "react-icons/md";
-import { useSession } from "next-auth/react";
+import { signOut, useSession } from "next-auth/react";
 import { User } from "@heroui/react";
 
 
@@ -16,7 +16,7 @@ export default function Layout({
 }) {
   const { data: session } = useSession();
 
-  return (
+  return (<>
     <div className="flex backdrop-blur-0">
       <div className="w-[18vw] flex flex-col items-center justify-between p-2 border-r-8 border-slate-500 my-2 min-h-screen">
         <div className="flex flex-col items-center">
@@ -33,12 +33,13 @@ export default function Layout({
           </div>
         </div>
         <div className="text-white">
-          {session && <div className='p-2 w-full rounded-2xl flex border justify-start gap-4 items-center'>
-            <Link href=''><img src={session?.user?.image} alt={session?.user?.name} className='w-8 h-8 rounded-full' /></Link>
-            <div>
-              <p>Hi {session?.user?.name}!</p>
+          {session && <div className=" rounded-md border-orange-100 p-2 flex flex-col justify-center items-center gap-2">
+            <div className='p-2 w-full rounded-2xl flex border justify-start gap-4 items-center'>
+              <img src={session?.user?.image} alt={session?.user?.name} className='w-8 h-8 rounded-full' />
+              <p>Hi, {session?.user?.name}!</p>
               {/* <p>{session?.user?.email}</p> */}
             </div>
+            <button onClick={() => signOut({ callbackUrl: "/" })} className="bg-red-600 p-2 py-1 rounded-lg w-full hover:bg-red-700 active:bg-red-500 border border-red-600 active:border-black">Log Out</button>
           </div>}
         </div>
       </div>
@@ -46,5 +47,7 @@ export default function Layout({
         {children}
       </div>
     </div>
+    <div className='text-center pb-1 text-white bg-slate-800'>© 2025 viewMee.live</div>
+  </>
   );
 }

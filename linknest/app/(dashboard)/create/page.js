@@ -104,11 +104,11 @@ const Create = () => {
     return (
         <>
             <div className="bg-[#e0cfe0] w-fit min-h-screen grid md:grid-cols-2 items-center">
-                <div className="backdrop-blur-md md:top-[8%] relative">
+                <div className="backdrop-blur-md relative">
 
                     <div className="ml-[10vw] flex flex-col gap-2 p-10">
-                        <h2 className="text-2xl text-black font-extrabold py-8">
-                            Create Your <span className="font-bold text-blue-950 animate-pulse">ViewMee.live</span>
+                        <h2 className="text-3xl text-black font-semibold py-8">
+                            Create Your <span className="font-extrabold text-green-700 animate-pulse">ViewMee.live</span>
                         </h2>
                         <div>
                             <p className="text-black font-semibold">
