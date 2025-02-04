@@ -8,5 +8,5 @@ export default withAuth({
 });
 
 export const config = {
-  matcher: ['/create/*'],  // Matches /create and all subpaths
+  matcher: ['/create/*', '/dashboard/*'],  // Matches /create and all subpaths
 };
