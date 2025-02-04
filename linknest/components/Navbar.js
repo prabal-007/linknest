@@ -2,7 +2,7 @@
 import Link from 'next/link'
 import React from 'react'
 import { usePathname } from 'next/navigation'
-import { signIn, signOut, useSession } from 'next-auth/react'
+import { signIn, useSession } from 'next-auth/react'
 import { AvatarComponent } from './ui/AvatarComponent'
 
 export const Navbar = () => {
@@ -37,8 +37,6 @@ export const Navbar = () => {
           <Link href='/dashboard' className='login bg-yellow-500 px-4 py-2 rounded-lg hover:bg-yellow-400'>Dashboard</Link>
           <AvatarComponent />
         </div>}
-        {/* {session && <Link href=''><img src={session?.user?.image} alt={session?.user?.name} className='w-8 h-8 rounded-full' /></Link>} */}
-
       </div>
     </nav>}
     </>
