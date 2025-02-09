@@ -7,11 +7,23 @@ import { RiChatAiFill } from "react-icons/ri";
 import { VscOpenPreview } from "react-icons/vsc";
 import { MdOutlineContactSupport } from "react-icons/md";
 import { AvatarNameComponent } from "@/components/ui/AvatarComponent";
+import { useRouter } from "next/navigation";
+import { useSession } from "next-auth/react";
+import { useEffect } from "react";
 
 
 export default function Layout({
   children,
 }) {
+  const router = useRouter();
+  const { data : session } = useSession();
+
+  useEffect(() => {
+    if (!session) {
+      router.push("/signin");
+    }
+  }, [session, router]);
+
   return (<>
     <div className="flex backdrop-blur-0">
       <div className="w-[18vw] flex flex-col items-center justify-between p-2 border-r-8 border-slate-500 my-2 min-h-screen">
@@ -23,8 +35,8 @@ export default function Layout({
             <SidebarItem href={"/dashboard"} title="Dashboard" icon={<IoHome />} />
             <SidebarItem href={"/create"} title="Create ViewMee.live" icon={<IoCreate />} />
             <SidebarItem href={`/review`} title="Review" icon={<VscOpenPreview />} />
-            <SidebarItem href={"/chatstark"} title="Stark AI" icon={<RiChatAiFill />} />
-            <SidebarItem href={"/review"} title="Support & Feedback" icon={<MdOutlineContactSupport />} />
+            <SidebarItem href={"/chat"} title="Stark AI" icon={<RiChatAiFill />} />
+            <SidebarItem href={"/website-builder"} title="Website Builder" icon={<MdOutlineContactSupport />} />
           </div>
         </div>
         <div className="text-white">

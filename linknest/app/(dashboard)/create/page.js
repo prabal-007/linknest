@@ -4,7 +4,6 @@ import React, { useState, Suspense, useEffect } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import { useSearchParams, useRouter } from "next/navigation";
 import { ImageUploder } from "@/components/ImageUploder";
-// import { useImageState } from "../store/useImageState";
 import { useImageState } from "@/app/store/useImageState";
 import { useSession } from "next-auth/react";
 import { DropdownSelector } from "@/components/ui/DropdownSelector";
@@ -25,11 +24,7 @@ const Create = () => {
         if (status === "loading") {
             return;
         }
-
-        if (!session) {
-            router.push("/signin");
-        }
-    }, [session, status, router]);
+    }, [status]);
 
     // Initialize state with search params on mount
     useEffect(() => {
