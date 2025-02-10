@@ -98,7 +98,7 @@ const Create = () => {
 
     return (
         <>
-            <div className="bg-[#e0cfe0] w-fit min-h-screen grid md:grid-cols-2 items-center">
+            <div className="bg-[#e0cfe0] w-fit h-screen grid md:grid-cols-2 scroll-smooth items-center overflow-scroll overflow-x-hidden">
                 <div className="backdrop-blur-md relative">
 
                     <div className="ml-[10vw] flex flex-col gap-2 p-10">

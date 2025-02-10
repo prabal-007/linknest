@@ -10,6 +10,8 @@ import { AvatarNameComponent } from "@/components/ui/AvatarComponent";
 import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
 import { useEffect } from "react";
+import { MdWorkspacePremium } from "react-icons/md";
+
 
 
 export default function Layout({
@@ -39,7 +41,9 @@ export default function Layout({
             <SidebarItem href={"/website-builder"} title="Website Builder" icon={<MdOutlineContactSupport />} />
           </div>
         </div>
-        <div className="text-white">
+        <div className="text-white flex flex-col justify-center items-center">
+          <button className="border border-yellow-100 hover:bg-yellow-500 active:border-black flex justify-center items-center gap-1 rounded-xl text-lg font-mono font-semibold p-2 shadow-md bg-yellow-400 text-black my-1">Get Premium<MdWorkspacePremium />
+          </button>
           <AvatarNameComponent />
         </div>
       </div>
