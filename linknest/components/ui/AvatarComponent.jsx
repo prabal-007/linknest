@@ -1,5 +1,7 @@
 import { Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Avatar, User } from "@heroui/react";
 import { signOut, useSession } from "next-auth/react";
+import { HiOutlineDotsHorizontal } from "react-icons/hi";
+
 
 export function AvatarComponent() {
   const { data: session } = useSession();
@@ -40,9 +42,10 @@ export function AvatarNameComponent() {
       <div className="flex items-center gap-4">
         <Dropdown placement="bottom-start">
           <DropdownTrigger>
-            <div className='p-2 w-full rounded-2xl flex border justify-start gap-4 items-center cursor-pointer'>
+            <div className='p-2 w-full rounded-2xl flex border justify-between active:border-black hover:border-slate-500 shadow-sm shadow-yellow-50  gap-4 items-center cursor-pointer'>
               <img src={imga} alt={session?.user?.name} className='w-8 h-8 rounded-full' />
               <p>Hi, {session?.user?.name}!</p>
+              <HiOutlineDotsHorizontal />
             </div>
           </DropdownTrigger>
           <DropdownMenu aria-label="User Actions" variant="flat" className="avatar-menu">
