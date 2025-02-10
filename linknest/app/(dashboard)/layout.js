@@ -47,7 +47,7 @@ export default function Layout({
         {children}
       </div>
     </div>
-    <div className='text-center pb-1 text-white bg-slate-800'>© 2025 viewMee.live</div>
+    <div className='text-center pb-1 text-white bg-slate-800 md:mt-2'>© 2025 viewMee.live</div>
   </>
   );
 }
