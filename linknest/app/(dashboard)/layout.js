@@ -25,7 +25,7 @@ export default function Layout({
   }, [session, router]);
 
   return (<>
-    <div className="flex backdrop-blur-0">
+    <div className="flex h-screen backdrop-blur-0">
       <div className="w-[18vw] flex flex-col items-center justify-between p-2 border-r-8 border-slate-500 my-2 min-h-screen">
         <div className="flex flex-col items-center">
           <Link href='/' className='m-2 bg-white w-full flex items-center justify-center p-2 rounded-md'>
