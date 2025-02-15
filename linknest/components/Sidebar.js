@@ -8,7 +8,7 @@ import { signIn, signOut, useSession } from 'next-auth/react';
 
 export const Sidebar = () => {
     const pathname = usePathname();
-    const showNavbar = ["/", "/create"].includes(pathname);
+    const showNavbar = ["/"].includes(pathname);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const { data: session } = useSession()
 
@@ -46,6 +46,9 @@ export const Sidebar = () => {
                     {session && <div className='p-4 flex justify-start gap-4 items-center'>
                         <Link href=''><img src={session?.user?.image} alt={session?.user?.name} className='w-8 h-8 rounded-full' /></Link>
                         <p>{session?.user?.name}</p>
+                    <Link href="/dashboard" className="hover:text-blue-600 bg-yellow-400 rounded-lg block md:inline border p-2">
+                        Dashboard
+                    </Link>
                     </div>}
                     <Link href="/create" className="hover:text-blue-600 block md:inline border p-2">
                         Create
