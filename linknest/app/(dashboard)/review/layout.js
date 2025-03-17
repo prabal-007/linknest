@@ -40,8 +40,8 @@ function ReviewLayoutComponent({ children }) {
   }));
 
   return (
-    <div className="flex flex-col backdrop-blur-0">
-      <div>
+    <div className="flex flex-col backdrop-blur-0 w-full h-full overflow-hidden">
+      <div className="">
         <UserDropdown
           options={accountOptions}
           selectedValue={selectedHandle}
