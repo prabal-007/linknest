@@ -7,7 +7,7 @@ const page = () => {
   // const  { selectedHandle } = useHandle();
   return (
     <div>
-      hello there!
+      hello world!
       {/* <h1>Currently Viewing Handle: {handle}</h1>
       <p>Dropdown Selected Handle: {selectedHandle}</p> */}
     </div>
