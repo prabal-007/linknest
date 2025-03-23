@@ -38,7 +38,7 @@ export default function HandlePage() {
         fetchData();
     }, [handle, status]);
 
-    if (loading) return <p>Loading...</p>;
+    if (loading) return <p className="text-white">Loading...</p>;
     if (!selectedHandle) return <p>Profile not found.</p>;
 
     return <EditableProfile selectedHandle={selectedHandle} email={session.user.email} />;

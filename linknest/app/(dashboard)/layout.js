@@ -20,18 +20,24 @@ export default function Layout({
   children,
 }) {
   const router = useRouter();
-  const { data: session } = useSession();
+  const { data: session, status } = useSession();
   const [sidebarStatus, setSidebarStatus] = useState(false)
 
   useEffect(() => {
-    if (!session) {
+    if (status === "loading") return;
+    if (status === "unauthenticated") {
       router.push("/signin");
     }
-  }, [session, router]);
+  }, [status, router]);
 
   const handleSidebar = () => {
     setSidebarStatus(!sidebarStatus)
   }
+
+  if (status === "loading") {
+    return <div>Loading...</div>;
+  }
+
   return (<>
     <div className="flex h-screen w-full backdrop-blur-0">
       <div className="">

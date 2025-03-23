@@ -21,7 +21,7 @@ export default function EditableProfile({ email, selectedHandle }) {
             links: selectedHandle.links || [],
             background: selectedHandle.pic || "",
             solidBg: selectedHandle.solidBg || "",
-            profilePic: selectedHandle.pic || "",
+            profilePic: selectedHandle.pic || "/profile.png",
         };
         setOriginalData(initialData);
         setBio(initialData.bio);
@@ -87,7 +87,7 @@ export default function EditableProfile({ email, selectedHandle }) {
         visible: { opacity: 1, x: 0, transition: { duration: 0.3 } },
     };
 
-    if (loading) return <p>Loading...</p>;
+    if (loading) return <p className="text-white">Loading...</p>;
 
     return (
         <motion.div
