@@ -14,6 +14,7 @@ import { MdWorkspacePremium } from "react-icons/md";
 import { IoClose } from "react-icons/io5";
 import { RiMenu3Fill } from "react-icons/ri";
 import { RiMenu2Fill } from "react-icons/ri";
+import PricingModal from "@/components/PricingModal";
 
 
 export default function Layout({
@@ -22,6 +23,7 @@ export default function Layout({
   const router = useRouter();
   const { data: session, status } = useSession();
   const [sidebarStatus, setSidebarStatus] = useState(false)
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     if (status === "loading") return;
@@ -33,6 +35,14 @@ export default function Layout({
   const handleSidebar = () => {
     setSidebarStatus(!sidebarStatus)
   }
+
+  const handleOpenModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
 
   if (status === "loading") {
     return <div>Loading...</div>;
@@ -53,7 +63,7 @@ export default function Layout({
               <button onClick={handleSidebar} data-drawer-target="logo-sidebar" data-drawer-toggle="logo-sidebar" aria-controls="logo-sidebar" type="button" className={`sm:hidden  inline-flex items-center p-2 mt-2 ms-3 text-sm text-gray-500 rounded-lg ${sidebarStatus ? 'sm:block' : 'sm:hidden'}  hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600`}>
                 <RiMenu2Fill />
               </button>
-            {/* </div>
+              {/* </div>
 
             <div> */}
               <div className="flex flex-col items-center">
@@ -72,7 +82,7 @@ export default function Layout({
 
 
             <div className="text-white flex flex-col justify-center items-center">
-              <button className="border border-yellow-100 hover:bg-yellow-500 active:border-black flex justify-center items-center gap-1 rounded-xl text-lg font-mono font-semibold p-2 shadow-md bg-yellow-400 text-black my-1">Get Premium<MdWorkspacePremium />
+              <button onClick={handleOpenModal} className="border border-yellow-100 hover:bg-yellow-500 active:border-black flex justify-center items-center gap-1 rounded-xl text-lg font-mono font-semibold p-2 shadow-md bg-yellow-400 text-black my-1">Get Premium<MdWorkspacePremium />
               </button>
               <AvatarNameComponent />
             </div>
@@ -85,6 +95,7 @@ export default function Layout({
       </div>
     </div>
     <div className='text-center pb-1 text-white bg-slate-800 md:mt-0'>© 2025 viewMee.live</div>
+    <PricingModal isOpen={isModalOpen} onClose={handleCloseModal} />
   </>
   )
 }
