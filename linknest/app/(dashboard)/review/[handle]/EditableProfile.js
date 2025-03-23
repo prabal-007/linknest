@@ -117,7 +117,7 @@ export default function EditableProfile({ email, selectedHandle }) {
                             />
                         </label>
 
-                        {/* <input type="text" className="w-2/3 border p-2 mt-2" placeholder="Background Image URL" value={background} onChange={(e) => setBackground(e.target.value)} /> */}
+                        <input type="text" className="w-2/3 border p-2 mt-2" placeholder="Background Image URL" value={background} onChange={(e) => setBackground(e.target.value)} />
                     </>
                 )}
                 <div className="flex gap-2 mt-4">
