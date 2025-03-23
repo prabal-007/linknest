@@ -2,15 +2,13 @@
 import { UserDropdown } from "@/components/ui/DropdownSelector";
 import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
-import { HandleProvider, useHandle } from "./HandleContext";
 import { useRouter } from "next/navigation";
 
 function ReviewLayoutComponent({ children }) {
   const router = useRouter();
-  const { selectedHandle, setSelectedHandle } = useHandle();
-
   const [existingHandles, setExistingHandles] = useState([]);
   const { data: session } = useSession();
+  const [selectedHandle, setSelectedHandle] = useState(null);
 
   useEffect(() => {
     const fetchHandles = async () => {
@@ -19,6 +17,10 @@ function ReviewLayoutComponent({ children }) {
         if (response.ok) {
           const data = await response.json();
           setExistingHandles(data.handles || []);
+          if (data.handles && data.handles.length > 0) {
+            setSelectedHandle(data.handles[0].handle);
+            router.push(`/review/${data.handles[0].handle}`);
+          }
         }
       } catch (error) {
         alert("Error fetching data: ", error);
@@ -27,7 +29,7 @@ function ReviewLayoutComponent({ children }) {
     if (session?.user?.email) {
       fetchHandles();
     }
-  }, [session]);
+  }, [session, router]);
 
   const handleSelectionChange = (newHandle) => {
     setSelectedHandle(newHandle);
@@ -40,7 +42,7 @@ function ReviewLayoutComponent({ children }) {
   }));
 
   return (
-    <div className="flex flex-col backdrop-blur-0 w-full h-full overflow-hidden">
+    <div className="flex flex-col gap-2 backdrop-blur-0 w-full h-full overflow-hidden">
       <div className="">
         <UserDropdown
           options={accountOptions}
@@ -57,8 +59,6 @@ function ReviewLayoutComponent({ children }) {
 
 export default function ReviewLayout({ children }) {
   return (
-    <HandleProvider>
       <ReviewLayoutComponent>{children}</ReviewLayoutComponent>
-    </HandleProvider>
   );
 }
