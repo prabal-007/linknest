@@ -38,7 +38,7 @@ export default function ResumeBuilder() {
         <h2 className="text-xl font-bold text-center mb-4">Resume Preview</h2>
         <div className="border p-4 min-h-[500px] rounded-lg">
           {/* Placeholder for resume content */}
-          <p className="text-center text-gray-400">Live resume preview will appear here.</p>
+          <p className="text-center text-gray-400">preview....</p>
         </div>
       </div>
 
