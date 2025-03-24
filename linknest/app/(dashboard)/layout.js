@@ -71,11 +71,12 @@ export default function Layout({
                   <img src="/logo-rbg.png" alt="viewMee" className='w-32' />
                 </Link>
                 <div>
-                  <SidebarItem href={"/dashboard"} title="Dashboard" icon={<IoHome />} />
-                  <SidebarItem href={"/create"} title="Create ViewMee.live" icon={<IoCreate />} />
-                  <SidebarItem href={`/review`} title="Review" icon={<VscOpenPreview />} />
-                  <SidebarItem href={"/chat"} title="Stark AI" icon={<RiChatAiFill />} />
-                  <SidebarItem href={"/website-builder"} title="Website Builder" icon={<MdOutlineContactSupport />} />
+                  <SidebarItem href={"/dashboard"} title="Dashboard" icon={<IoHome />} onClick={handleSidebar}/>
+                  <SidebarItem href={"/create"} title="Create ViewMee.live" icon={<IoCreate />} onClick={handleSidebar}/>
+                  <SidebarItem href={`/review`} title="Review" icon={<VscOpenPreview />} onClick={handleSidebar}/>
+                  <SidebarItem href={"/chat"} title="Stark AI" icon={<RiChatAiFill />} onClick={handleSidebar}/>
+                  <SidebarItem href={"/website-builder"} title="Website Builder" icon={<MdOutlineContactSupport />} onClick={handleSidebar}/>
+                  <SidebarItem href={"/resume-builder"} title="Resume Builder" icon={<MdOutlineContactSupport />} onClick={handleSidebar}/>
                 </div>
               </div>
             </div>

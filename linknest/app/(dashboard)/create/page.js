@@ -101,7 +101,7 @@ const Create = () => {
             <div className="bg-[#e0cfe0] w-fit h-full grid md:grid-cols-2 scroll-smooth items-center overflow-hidden overflow-y-scroll">
                 <div className="backdrop-blur-md relative">
 
-                    <div className="ml-[10vw] flex flex-col gap-2 p-10">
+                    <div className="ml-[6vw] flex flex-col gap-2 p-10">
                         <h2 className="text-3xl text-black font-semibold py-8">
                             Create Your <span className="font-extrabold text-green-700 animate-pulse">ViewMee.live</span>
                         </h2>
