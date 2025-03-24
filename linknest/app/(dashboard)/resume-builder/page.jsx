@@ -73,14 +73,14 @@ export default function ResumeBuilder() {
           value={personalInfo.location}
           onChange={(e) => setPersonalInfo({ ...personalInfo, location: e.target.value })}
         />
-        <div className="flex justify-between mt-4">
-          <button className="flex items-center gap-2 bg-blue-500 text-white px-4 py-2 rounded">
+        <div className="flex flex-col gap-4 items-center justify-between mt-4">
+          <button className="flex w-32 items-center gap-2 bg-blue-500 text-white px-4 py-2 rounded">
             <FaDownload /> Export
           </button>
-          <button className="flex items-center gap-2 bg-green-500 text-white px-4 py-2 rounded">
+          <button className="flex w-32 items-center gap-2 bg-green-500 text-white px-4 py-2 rounded">
             <FaGlobe /> Publish
           </button>
-          <button className="flex items-center gap-2 bg-yellow-500 text-white px-4 py-2 rounded">
+          <button className="flex w-32 items-center gap-2 bg-yellow-500 text-white px-4 py-2 rounded">
             <FaMagic /> AI Assist
           </button>
         </div>
