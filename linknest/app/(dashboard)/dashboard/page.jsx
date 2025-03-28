@@ -10,8 +10,8 @@ const page = () => {
         <DashCards title={"ViewMee.live"} bg={"bg-gradient-to-r from-rose-300 to-rose-500"} />
       </Link>
       <Link href={"/resume-builder"}>
-        {/* <DashCards title={"Resume Builder"} bg={"bg-gradient-to-r from-green-300 to-sky-500"} /> */}
-        <DashCards title={"Resume Builder"} bg={"bg-gray-200"} />
+        <DashCards title={"Resume Builder"} bg={"bg-gradient-to-r from-green-300 to-sky-500"} />
+        {/* <DashCards title={"Resume Builder"} bg={"bg-gray-200"} /> */}
       </Link>
       <Link href={"/website-builder"}>
         {/* <DashCards title={"Website Builder"} bg={"bg-gradient-to-r from-red-200 to-amber-400"} /> */}

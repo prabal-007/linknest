@@ -219,7 +219,7 @@ export default function Layout({ children }) {
               data-drawer-toggle="logo-sidebar"
               aria-controls="logo-sidebar"
               type="button"
-              className={`md:inline-flex z-50 absolute left-[50%] md:left-[15%] h-fit bg-black items-center p-2 mt-2 ms-3 text-sm text-gray-500 rounded-lg hover:bg-slate-200 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600`}
+              className={`md:inline-flex z-50 absolute top-4 left-[50%] md:left-[15%] h-fit bg-black items-start p-2 mt-2 ms-3 text-sm text-gray-500 rounded-lg hover:bg-slate-200 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600`}
             >
               <span className="sr-only">Close sidebar</span>
               <BiLeftArrow className=" size-6" />
@@ -229,7 +229,7 @@ export default function Layout({ children }) {
         {/* Main Content */}
         <div
           className="w-full p-2 rounded-lg"
-          style={{ marginLeft: isDesktop && sidebarStatus ? "16rem" : "0" }}
+          style={{ marginLeft: isDesktop && sidebarStatus ? "12%" : "0" }}
         >
           {children}
         </div>
